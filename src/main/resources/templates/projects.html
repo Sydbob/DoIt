@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
+
+    <title>DoIt! | Projects</title>
+
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{css/style.css}" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<div role="navigation">
+    <div class="navbar navbar-inverse">
+        <a href="/" class="navbar-brand">DoIt!</a>
+        <div class="navbar-collapse collapse">
+            <ul>
+                <img class="logo" src="images/logo2.png" title="&quot;Do It Logo&quot;"/>
+                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/all-tasks">Dashboard</a></li>
+                <li><img class="navigation" src="/images/sidebar/projectactive.png"/><a class="active" href="/all-tasks">Projects</a></li>
+                <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/all-tasks">Sprints</a></li>
+                <li><img class="navigation" src="/images/sidebar/task.png"/><a href="/all-tasks">Tasks</a></li>
+                <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/all-tasks">Teams</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="container invisible-at-first" id="homeDiv">
+    <div class="jumbotron text-center">
+        <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
+    </div>
+</div>
+<div class="container text-center" id="projectsDiv">
+    <h3>Projects</h3>
+    <hr />
+    <div class="table-responsive">
+        <table class='table table-responsive table-bordered text-left'>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="project : ${projects}">
+            <tr>
+                <td th:text="${project.projectID}">1</td>
+                <td th:text="${project.title}">1</td>
+                <td th:text="${project.description}">1</td>
+                <td th:text="${project.start_date}">1</td>
+                <td th:text="${project.end_date}">1</td>
+                <td th:text="${project.status}">1</td>
+                <td><a th:href="@{update-project(id=${proejct.projectID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a th:href="@{delete-project(id=${project.projectID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!--<script th:src="@{js/jquery-1.11.1.min.js}"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+
+<script src="bootstrap.min.js"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+</body>
+
+</html>
