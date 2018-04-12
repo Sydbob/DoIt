@@ -26,10 +26,10 @@
             <ul>
                 <img class="logo" src="/images/logo2.png" title="&quot;Do It Logo&quot;"/>
                 <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/all-tasks">Dashboard</a></li>
-                <li><img class="navigation" src="/images/sidebar/projectactive.png"/><a class="active" href="/all-tasks">Projects</a></li>
-                <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/all-sprints">Sprints</a></li>
-                <li><img class="navigation" src="/images/sidebar/task.png"/><a href="/all-tasks">Tasks</a></li>
-                <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/all-tasks">Teams</a></li>
+                <li><img class="navigation" src="/images/sidebar/projectactive.png"/><a class="active" href="/projects">Projects</a></li>
+                <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
+                <li><img class="navigation" src="/images/sidebar/task.png"/><a href="/tasks">Tasks</a></li>
+                <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/tasks">Teams</a></li>
             </ul>
         </div>
     </div>
@@ -64,7 +64,7 @@
                 <td th:text="${project.start_date}">1</td>
                 <td th:text="${project.end_date}">1</td>
                 <td th:text="${project.status}">1</td>
-                <td><a th:href="@{update-project(id=${proejct.projectID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td><a th:href="@{update-project(id=${project.projectID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                 <td><a th:href="@{delete-project(id=${project.projectID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
             </tr>
