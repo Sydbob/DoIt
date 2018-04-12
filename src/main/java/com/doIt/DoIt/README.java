@@ -21,7 +21,7 @@ public class README {
     2.  There are 2 files in resources/templates:
         -index.html (this one i used for all-tasks http:/localhost:8080/all-tasks)
         -home.html (this one i used for "home page" http://localhost:8080)
-        -update.html for http:/localhost:8080/update-task
+        -updatetask.html for http:/localhost:8080/update-task
 
      */
 }

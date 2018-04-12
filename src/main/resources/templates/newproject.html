@@ -24,45 +24,59 @@
     <div class="navbar navbar-inverse">
         <a href="/" class="navbar-brand">DoIt!</a>
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="all-tasks">All Tasks</a></li>
-                <li><a href="new-task">New Task</a></li>
+            <ul>
+                <img class="logo" src="/images/logo2.png" title="&quot;Do It Logo&quot;"/>
+                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/all-tasks">Dashboard</a></li>
+                <li><img class="navigation" src="/images/sidebar/projectactive.png"/><a class="active" href="/all-tasks">Projects</a></li>
+                <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/all-sprints">Sprints</a></li>
+                <li><img class="navigation" src="/images/sidebar/task.png"/><a href="/all-tasks">Tasks</a></li>
+                <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/all-tasks">Teams</a></li>
             </ul>
         </div>
     </div>
 </div>
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
-        <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
+        <h2>Create a new project</h2>
     </div>
 </div>
 
 <!--some html here to make the form appear for editing the task-->
 <div class="container text-center">
-    <h3>Edit Task</h3>
+    <h3>New Project</h3>
     <form class="form-horizontal" method="POST" action="save-task">
-        <input type="hidden" name="taskID" th:value="${task.taskID}"/>
-        <input type="hidden" name="projectID" th:value="${task.projectID}"/>
-        <input type="hidden" name="hours_estimated" th:value="${task.hours_estimated}"/>
-        <input type="hidden" name="hours_contributed" th:value="${task.hours_contributed}"/>
+
         <div class="form-group">
-            <label class="control-label col-md-3">Name</label>
+            <label class="control-label col-md-3">Project ID</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="name" th:value="${task.name}"/>
+                <input type="text" class="form-control" name="projectID"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Title</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="title" />
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">Description</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="description" th:value="${task.description}"/>
+                <input type="text" class="form-control" name="description" />
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Status</label>
+            <label class="control-label col-md-3">Start Date</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="status" th:value="${task.status}"/>
+                <input type="text" class="form-control" name="start_date"/>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">End Date</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="end_date"/>
+            </div>
+        </div>
+
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Save"/>
         </div>

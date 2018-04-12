@@ -28,8 +28,8 @@
                 <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
                 <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/tasks">Dashboard</a></li>
                 <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/tasks">Projects</a></li>
-                <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-                <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a class ="active" href="/all-tasks">Tasks</a></li>
+                <li><img class="navigation" src="/images/sidebar/sprintactive.png"/><a class="active" href="/sprints">Sprints</a></li>
+                <li><img class="navigation" src="/images/sidebar/task.png"/><a href="/tasks">Tasks</a></li>
                 <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/tasks">Teams</a></li>
             </ul>
         </div>
@@ -37,49 +37,43 @@
 </div>
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
-        <h2>Create a new task</h2>
+        <h2>Create a new sprint</h2>
     </div>
 </div>
 
 <!--some html here to make the form appear for editing the task-->
 <div class="container text-center">
-    <h3>New Task</h3>
+    <h3>New Sprint</h3>
     <form class="form-horizontal" method="POST" action="save-task">
 
         <div class="form-group">
-            <label class="control-label col-md-3">Name</label>
+            <label class="control-label col-md-3">Sprint ID</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="name"/>
+                <input type="text" class="form-control" name="sprintID"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Description</label>
+            <label class="control-label col-md-3">Project ID</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="description" />
+                <input type="text" class="form-control" name="projectID" />
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Status</label>
+            <label class="control-label col-md-3">Team ID</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="status" />
+                <input type="text" class="form-control" name="teamID" />
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Project ID (Enter 1 for now)</label>
+            <label class="control-label col-md-3">Deadline</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="projectID"/>
+                <input type="text" class="form-control" name="deadline"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Hours Estimated</label>
+            <label class="control-label col-md-3">Start Date</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="hours_estimated"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-3">Hours Contributed</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="hours_contributed"/>
+                <input type="text" class="form-control" name="start_date"/>
             </div>
         </div>
 
