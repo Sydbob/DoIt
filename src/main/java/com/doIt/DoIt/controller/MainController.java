@@ -24,11 +24,11 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/all-tasks")
+    @GetMapping("/tasks")
     public String allTasks(HttpServletRequest request){
         request.setAttribute("tasks", taskService.getAllTasks());
         request.setAttribute("mode", "MODE_TASKS");
-        return "dashboard";
+        return "tasks";
     }
 
     @GetMapping("/delete-task")

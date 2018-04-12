@@ -14,7 +14,7 @@ public class SprintController {
     @Autowired
     private SprintService sprintService;
 
-    @GetMapping("/all-sprints")
+    @GetMapping("/sprints")
     public String allSprints(HttpServletRequest request){
         request.setAttribute("sprints", sprintService.getAllSprints());
         request.setAttribute("mode", "MODE_SPRINTS");
