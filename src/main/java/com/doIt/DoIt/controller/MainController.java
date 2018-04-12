@@ -28,7 +28,7 @@ public class MainController {
     public String allTasks(HttpServletRequest request){
         request.setAttribute("tasks", taskService.getAllTasks());
         request.setAttribute("mode", "MODE_TASKS");
-        return "index";
+        return "dashboard";
     }
 
     @GetMapping("/delete-task")
