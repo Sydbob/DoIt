@@ -2,23 +2,27 @@ package com.doIt.DoIt.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
-//Additon
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity(name="Task")
+@Entity(name = "Task")
 public class Task implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-
-    //Additions standard validation annotations Tom S, 3/4/18
     @NotNull
     private int taskID;
+
+
+    private int sprintID;
+
 
     @NotNull
     @Size(max=50)
     private String name;
+
+
+    private String username;
 
     @NotNull
     @Size(max=300)
@@ -35,12 +39,12 @@ public class Task implements Serializable {
     private int hours_estimated;
 
     @NotNull
+
     private int projectID;
 
     public Task() {
     }
 
-//TH and TS edited on 16.03 for validity checks on Task contrsuctor. There are two constructors so we weren't sure if the validty checks were needed on both?
 
     public Task(String name, String description, String status, int hours_contributed, int hours_estimated, int projectID) {
         super();
@@ -76,6 +80,14 @@ public class Task implements Serializable {
         this.hours_contributed= 0;
         this.hours_estimated = 0;
         this.projectID = 1;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public int getTaskID() {
@@ -115,6 +127,15 @@ public class Task implements Serializable {
             throw new IllegalArgumentException("Task name must be specified as a string under 50 characters.");
         }
         else this.name = name;
+    }
+
+
+    public int getSprintID() {
+        return sprintID;
+    }
+
+    public void setSprintID(int sprintID) {
+        this.sprintID = sprintID;
     }
 
     public void setDescription(String description) {
