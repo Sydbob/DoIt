@@ -33,4 +33,34 @@ public class LoginController {
         modelAndView.setViewName("registration");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/registration", method =RequestMethod.POST)
+    public ModelAndView createNewMember(@Valid Member member, BindingResult bindingResult){
+        ModelAndView modelAndView = new ModelAndView();
+        Member memberExists = memberService.findUserByEmail(member.getEmail());
+        if (memberExists != null){
+            bindingResult
+                    .rejectValue("email", "error.member", "User with such email already exists");
+        }
+
+        if (bindingResult.hasErrors()){
+            modelAndView.setViewName("registration");
+        }
+        else{
+            memberService.saveMemeber(member);
+            modelAndView.addObject("successMessage", "Member has been successfully registered");
+            modelAndView.addObject("member", new Member());
+            modelAndView.setViewName("registration");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
+    public ModelAndView home(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Member member = memberService.findUserByEmail(auth.getName());
+        modelAndView.setViewName("tasks");
+        return modelAndView;
+    }
 }

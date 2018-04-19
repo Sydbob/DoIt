@@ -24,7 +24,6 @@ public class Member implements Serializable {
     private String password;
 
     @Column(name = "teamID")
-    @NotEmpty(message = "Please enter a team number")
     private int teamID;
 
     @Column(name = "name")
