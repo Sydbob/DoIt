@@ -18,12 +18,6 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @RequestMapping(value ="/", method = RequestMethod.GET)
-    public String home(HttpServletRequest request){
-        request.setAttribute("mode", "MODE_HOME");
-        return "home";
-    }
-
     @GetMapping("/tasks")
     public String allTasks(HttpServletRequest request){
         request.setAttribute("tasks", taskService.getAllTasks());

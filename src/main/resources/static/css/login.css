@@ -1,12 +1,16 @@
 body {
-    background-image: url("images/background.png");
-    background-attachment: fixed;
+    background-image: url("http://getwallpapers.com/wallpaper/full/c/d/6/342289.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-div.login {
+div.container {
 	font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
 	font-size: 16px;
-    background-color: #f9fbfd;
+    background-color: black;
+    opacity: 0.6;
     box-shadow: 5px 5px 5px grey;
     margin: auto;
     margin-top: 10%;
@@ -18,10 +22,8 @@ div.login {
     text-align: center;
 }
 
-label { 
-	display: inline-block; 
-	width: 80px; 
-	text-align: left;
+img {
+    opacity: 1;
 }
 
 input[type=text], select {
@@ -30,6 +32,7 @@ input[type=text], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    opacity: 1;
 }
 
 input[type=password], select {
@@ -38,10 +41,12 @@ input[type=password], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    opacity: 1;
 }
 
-button[type=button] {
-    width: 100%;
+button[type=submit] {
+    opacity: 1;
+    width: 200px;
     background-color: #007ce4;
     color: white;
     padding: 14px 20px;
@@ -51,6 +56,7 @@ button[type=button] {
     cursor: pointer;
 }
 
-button[type=button]:hover {
+button[type=submit]:hover {
+    opacity: 1;
     background-color: #0d75cd;
 }
