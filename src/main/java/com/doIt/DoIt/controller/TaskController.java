@@ -13,7 +13,7 @@ import org.springframework.validation.BindingResult;
 
 //notes: use rest controller, return response obj not Strings
 @Controller
-public class MainController {
+public class TaskController {
 
     @Autowired
     private TaskService taskService;
@@ -36,13 +36,13 @@ public class MainController {
         taskService.delete(id);
         request.setAttribute("tasks", taskService.getAllTasks());
         request.setAttribute("mode", "MODE_TASKS");
-        return "index";
+        return "tasks";
     }
 
     @GetMapping("/new-task")
     public String newTask(HttpServletRequest request){
         request.setAttribute("mode", "MODE_NEW");
-        return "new";
+        return "newtask";
     }
 
     @PostMapping("/save-task")
@@ -50,14 +50,14 @@ public class MainController {
         taskService.save(task);
         request.setAttribute("tasks", taskService.getAllTasks());
         request.setAttribute("mode", "MODE_TASKS");
-        return "index";
+        return "tasks";
     }
 
     @GetMapping("/update-task")
     public String updateTask(@RequestParam int id, HttpServletRequest request){
         request.setAttribute("task", taskService.findTask(id));
         request.setAttribute("mode", "MODE_UPDATE");
-        return "update";
+        return "updatetask";
     }
 
     //Addition validation check method, T Smith 3/4/18 unsure on  "/check-task" and "redirect:/results"
@@ -66,7 +66,7 @@ public class MainController {
         if(bindingResult.hasErrors()){
             return "form";
         }
-        return "redirect:/index";
+        return "redirect:/tasks";
     }
 
 

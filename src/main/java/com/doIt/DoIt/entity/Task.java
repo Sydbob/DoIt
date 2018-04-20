@@ -1,5 +1,7 @@
 package com.doIt.DoIt.entity;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
@@ -17,7 +19,7 @@ public class Task implements Serializable {
     private int sprintID;
 
 
-    @NotNull
+    @NotEmpty(message = "Please provide a task name")
     @Size(max=50)
     private String name;
 
