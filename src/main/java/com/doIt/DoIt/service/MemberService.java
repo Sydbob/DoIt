@@ -21,6 +21,10 @@ public class MemberService {
         return memberRepository.findByUsername(username);
     }
 
+    public Member findUserByName(String name){
+        return memberRepository.findByName(name);
+    }
+
     public Member findUserByRole(String role){
         return memberRepository.findByRole(role);
     }
