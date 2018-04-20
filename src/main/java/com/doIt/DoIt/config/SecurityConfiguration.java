@@ -31,7 +31,7 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("SELECT username as principal, password as credentials, true FROM member WHERE username= ?")
+                .usersByUsernameQuery("select username as principal, password as credentials, true from member where username= ?")
                 .authoritiesByUsernameQuery("select username as principal, role as role from member where username = ?");
     }
     @Override
@@ -45,11 +45,11 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
                     .antMatchers("/tasks").permitAll()
                     .antMatchers("/sprints").permitAll()
                     .antMatchers("/projects").permitAll()
-                    .antMatchers("/admin/**").hasAnyAuthority("manager").anyRequest()
+                    .antMatchers("/admin/**").hasAnyAuthority("admin").anyRequest()
                     .authenticated().and().csrf().disable().formLogin()
                     .loginPage("/login").failureUrl("/login?error=true")
                     .defaultSuccessUrl("/tasks")
-                    .usernameParameter("email")
+                    .usernameParameter("username")
                     .passwordParameter("password")
                     .and().logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
