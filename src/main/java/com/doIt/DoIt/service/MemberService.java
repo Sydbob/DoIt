@@ -17,8 +17,8 @@ public class MemberService {
 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public Member findUserByEmail(String email){
-        return memberRepository.findByEmail(email);
+    public Member findUserByUsername(String username){
+        return memberRepository.findByUsername(username);
     }
 
     public Member findUserByRole(String role){

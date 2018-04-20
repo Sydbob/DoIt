@@ -29,15 +29,11 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
     private String rolesQuery;
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-
-        auth.
-                jdbcAuthentication()
-                    .usersByUsernameQuery(usersQuery)
-                    .authoritiesByUsernameQuery(rolesQuery)
-                    .dataSource(dataSource);
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("SELECT username as principal, password as credentials, true FROM member WHERE username= ?")
+                .authoritiesByUsernameQuery("select username as principal, role as role from member where username = ?");
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception{
 
@@ -47,10 +43,10 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
                     .antMatchers("/login").permitAll()
                     .antMatchers("/registration").permitAll()
                     .antMatchers("/tasks").permitAll()
-                    .antMatchers("/admin/**").hasAnyAuthority("admin").anyRequest()
+                    .antMatchers("/admin/**").hasAnyAuthority("manager").anyRequest()
                     .authenticated().and().csrf().disable().formLogin()
                     .loginPage("/login").failureUrl("/login?error=true")
-                    .defaultSuccessUrl("/admin/home")
+                    .defaultSuccessUrl("/tasks")
                     .usernameParameter("email")
                     .passwordParameter("password")
                     .and().logout()

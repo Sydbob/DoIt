@@ -1,5 +1,7 @@
 package com.doIt.DoIt.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import com.doIt.DoIt.entity.Member;
@@ -10,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +28,21 @@ public class LoginController {
         return "login";
     }
 
+    /*
+    @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
+    public ModelAndView loginProcess(@Valid Member member, HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = null;
+        Member memberExists = memberService.findUserByUsername(member.getUsername());
+        if (null != memberExists) {
+            mav = new ModelAndView("tasks");
+            mav.addObject("member", member);
+        } else {
+            mav = new ModelAndView("login");
+            mav.addObject("message", "Username or Password is wrong!!");
+        }
+        return mav;
+    }*/
+
     @RequestMapping( value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -37,10 +55,10 @@ public class LoginController {
     @RequestMapping(value = "/registration", method =RequestMethod.POST)
     public ModelAndView createNewMember(@Valid Member member, BindingResult bindingResult){
         ModelAndView modelAndView = new ModelAndView();
-        Member memberExists = memberService.findUserByEmail(member.getEmail());
+        Member memberExists = memberService.findUserByUsername(member.getUsername());
         if (memberExists != null){
             bindingResult
-                    .rejectValue("email", "error.member", "User with such email already exists");
+                    .rejectValue("username", "error.member", "User with such username already exists");
         }
 
         if (bindingResult.hasErrors()){
@@ -55,11 +73,11 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
+    @RequestMapping(value="/home", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Member member = memberService.findUserByEmail(auth.getName());
+        Member member = memberService.findUserByUsername(auth.getName());
         modelAndView.setViewName("tasks");
         return modelAndView;
     }
