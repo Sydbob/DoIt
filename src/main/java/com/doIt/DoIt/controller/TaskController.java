@@ -33,8 +33,15 @@ public class TaskController {
 
 
     @GetMapping("/tasks")
-    public String allTasks(Authentication auth, HttpServletRequest request){
+    public String usersTasks(Authentication auth, HttpServletRequest request){
         request.setAttribute("tasks", taskService.getTasksByUsername(auth.getName()));
+        request.setAttribute("mode", "MODE_TASKS");
+        return "tasks";
+    }
+
+    @GetMapping("/admin/all-tasks")
+    public String allTasks(HttpServletRequest request){
+        request.setAttribute("tasks", taskService.getAllTasks());
         request.setAttribute("mode", "MODE_TASKS");
         return "tasks";
     }

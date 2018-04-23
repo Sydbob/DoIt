@@ -17,10 +17,7 @@ public class Sprint implements Serializable{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int sprintID;
 
-
     private int projectID;
-
-
     private int teamID;
 
     @Column(name = "deadline", nullable = false)

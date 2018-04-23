@@ -1,9 +1,11 @@
 package com.doIt.DoIt.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -15,14 +17,11 @@ public class Task implements Serializable {
     @NotNull
     private int taskID;
 
-
     private int sprintID;
-
 
     @NotEmpty(message = "Please provide a task name")
     @Size(max=50)
     private String name;
-
 
     private String username;
 
@@ -41,11 +40,17 @@ public class Task implements Serializable {
     private int hours_estimated;
 
     @NotNull
-
     private int projectID;
 
-    public Task() {
-    }
+    @Column(name = "start_date", nullable = false)
+    @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    private LocalDateTime start_date;
+
+    @Column(name = "end_date", nullable = false)
+    @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    private LocalDateTime end_date;
+
+    public Task() {}
 
 
     public Task(String name, String description, String status, int hours_contributed, int hours_estimated, int projectID) {
