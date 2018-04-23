@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
+
+    <title>Do It! | Login</title>
+
+    <link th:href="@{css/accessdenied.css}" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <link th:href="@{css/accessdenied.css}" rel="stylesheet" />
 </head>
 <body>
+<h1>Access Denied!</h1>
+<div id="magic-word">
+    <img src="https://media.giphy.com/media/3ohzdQ1IynzclJldUQ/giphy.gif" />
+</div>
 
+<div id="button">
+    <a href="tasks.html">Click here to go back to the task menu</a>
+</div>
+<footer>
+    <p>&copy; Copyright 2018. DoIt Ltd. All rights reserved. DoIt is a registered trademark. No content may be downloaded for commercial or non-commercial usage.</p>
+</footer>
 </body>
 </html>

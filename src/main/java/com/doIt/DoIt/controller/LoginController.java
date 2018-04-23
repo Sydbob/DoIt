@@ -32,6 +32,10 @@ public class LoginController {
         return "login";
     }
 
+    @RequestMapping(value = {"/access-denied"}, method = RequestMethod.GET)
+    public String accessDenied(){
+        return "accessdenied";
+    }
 
     @RequestMapping( value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
