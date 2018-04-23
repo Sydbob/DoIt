@@ -1,8 +1,11 @@
 package com.doIt.DoIt.controller;
 
+import com.doIt.DoIt.entity.Member;
 import com.doIt.DoIt.entity.Sprint;
+import com.doIt.DoIt.service.MemberService;
 import com.doIt.DoIt.service.SprintService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +20,12 @@ public class SprintController {
 
     @Autowired
     private SprintService sprintService;
+    @Autowired
+    private MemberService memberService;
 
     @GetMapping("/sprints")
-    public String allSprints(HttpServletRequest request){
-        request.setAttribute("sprints", sprintService.getAllSprints());
+    public String allSprints(Authentication auth, HttpServletRequest request){
+        request.setAttribute("sprints", sprintService.getAllSprintsByTeamID(memberService.findUserByUsername(auth.getName()).getTeamID()));
         request.setAttribute("mode", "MODE_SPRINTS");
         return "sprints";
     }
