@@ -1,12 +1,14 @@
 package com.doIt.DoIt.controller;
 
 import com.doIt.DoIt.entity.Task;
+import com.doIt.DoIt.service.MemberService;
 import com.doIt.DoIt.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
@@ -18,12 +20,23 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+
+
     @GetMapping("/tasks")
-    public String allTasks(HttpServletRequest request){
-        request.setAttribute("tasks", taskService.getAllTasks());
+    public String allTasks(@RequestParam String username, HttpServletRequest request){
+        taskService.getTasksByUsername(username);
+        request.setAttribute("tasks", taskService.getTasksByUsername(username));
         request.setAttribute("mode", "MODE_TASKS");
         return "tasks";
     }
+
+    /*
+    @GetMapping("/tasks")
+    public String allTasks(Principal principal, HttpServletRequest request){
+        request.setAttribute("tasks", taskService.getTasksByUsername(memberService.findUserByName(principal.getName()).getUsername()));
+        request.setAttribute("mode", "MODE_TASKS");
+        return "tasks";
+    }*/
 
     @GetMapping("/delete-task")
     public String deleteTask(@RequestParam int id, HttpServletRequest request){

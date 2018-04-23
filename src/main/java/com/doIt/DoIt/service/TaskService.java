@@ -25,13 +25,15 @@ public class TaskService {
     }
 
     public List<Task> getTasksByUsername(String username){
-        List<Task> tasks = new ArrayList<>();
+        List<Task> myTasks = new ArrayList<>();
         for(Task t: taskRepository.findAll())
         {
-            if(t.getUsername() == username)
-                tasks.add(t);
+            if(t.getUsername().equals(username))
+            {
+                myTasks.add(t);
+            }
         }
-        return tasks;
+        return myTasks;
     }
 
     public List<Task> getTasksBySprintID(int sprintID){
