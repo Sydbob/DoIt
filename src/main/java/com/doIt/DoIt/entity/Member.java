@@ -4,10 +4,9 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Transient;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 public class Member implements Serializable {
@@ -30,10 +29,6 @@ public class Member implements Serializable {
     @NotEmpty(message = "Please provide a name")
     private String name;
 
-    @Column(name = "role")
-    @NotEmpty(message = "Please provide a role")
-    private String role;
-
     @Column(name = "email")
     @NotEmpty(message = "Please provide an email")
     private String email;
@@ -42,13 +37,16 @@ public class Member implements Serializable {
     @NotEmpty(message = "Please provide a phone number")
     private String telephone;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "member_roles", joinColumns = @JoinColumn(name = "username"), inverseJoinColumns = @JoinColumn(name = "roleID"))
+    private Set<Role> roles;
+
     public Member() {}
-    public Member(String username, String password, int teamID, String name, String role, String email, String telephone) {
+    public Member(String username, String password, int teamID, String name, String email, String telephone) {
         this.username = username;
         this.password = password;
         this.teamID = teamID;
         this.name = name;
-        this.role = role;
         this.email = email;
         this.telephone = telephone;
     }
@@ -85,14 +83,6 @@ public class Member implements Serializable {
         this.name = name;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -107,5 +97,13 @@ public class Member implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

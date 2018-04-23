@@ -24,8 +24,15 @@ public class SprintController {
     private MemberService memberService;
 
     @GetMapping("/sprints")
-    public String allSprints(Authentication auth, HttpServletRequest request){
+    public String usersSprints(Authentication auth, HttpServletRequest request){
         request.setAttribute("sprints", sprintService.getAllSprintsByTeamID(memberService.findUserByUsername(auth.getName()).getTeamID()));
+        request.setAttribute("mode", "MODE_SPRINTS");
+        return "sprints";
+    }
+
+    @GetMapping("/admin/all-sprints")
+    public String allSprints(HttpServletRequest request){
+        request.setAttribute("sprints", sprintService.getAllSprints());
         request.setAttribute("mode", "MODE_SPRINTS");
         return "sprints";
     }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Member findByUsername(String username);
-    Member findByRole(String role);
+    //Member findByRole(String role);
     Member findByName(String name);
 
 }
