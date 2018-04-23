@@ -50,6 +50,10 @@ h1 {
     font-size: 4em;
 }
 
+#button:hover {
+    background-color: #708599;
+}
+
 footer {
     text-align: right;
     color: white;
