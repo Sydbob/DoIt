@@ -73,6 +73,10 @@ img.user {
     background-color: red;
 }
 
+.white {
+    background-color: white;
+}
+
 footer {
     text-align: right;
     color: white;
