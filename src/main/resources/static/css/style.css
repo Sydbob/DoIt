@@ -65,6 +65,14 @@ img.user {
     align-self: bottom;
 }
 
+.yellow{
+    background-color: yellow;
+}
+
+.red{
+    background-color: red;
+}
+
 footer {
     text-align: right;
     color: white;
