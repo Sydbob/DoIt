@@ -59,7 +59,7 @@
             </thead>
             <tbody>
             <tr th:each="task : ${tasks}">
-            <tr>
+            <tr th:if="${task.status}=='pending'" th:class="yellow">
                 <td th:text="${task.taskID}">1</td>
                 <td th:text="${task.name}">1</td>
                 <td th:text="${task.description}">1</td>
