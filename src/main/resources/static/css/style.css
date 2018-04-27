@@ -82,3 +82,13 @@ footer {
     height:60px;
     background:#3b4a54;
 }
+
+tr:hover {
+
+    background-color: #ffd9ed;
+}
+th {
+
+    color: white;
+    background-color: #FD038A;
+}
