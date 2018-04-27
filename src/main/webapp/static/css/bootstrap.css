@@ -69,6 +69,8 @@ body {
   background-color: #fff;
 }
 
+
+
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
@@ -1677,7 +1679,7 @@ pre code {
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  /*border-top: 1px solid #dee2e6;*/
 }
 
 .table thead th {
@@ -8967,9 +8969,9 @@ a.text-dark:hover, a.text-dark:focus {
   .table th {
     background-color: #fff !important;
   }
-  .table-bordered th,
+  /*.table-bordered th,
   .table-bordered td {
     border: 1px solid #ddd !important;
-  }
+  }*/
 }
 /*# sourceMappingURL=bootstrap.css.map */

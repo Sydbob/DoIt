@@ -7,15 +7,16 @@
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
 
-    <title>DoIt! | Sprints</title>
+    <title>DoIt! | Tasks</title>
 
-    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{css/style.css}" rel="stylesheet" />
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+
 
 </head>
 
@@ -37,15 +38,15 @@
 
 
 <div class="container invisible-at-first" id="homeDiv">
-    <div class="jumbotron text-center">
+    <!--<div class="jumbotron text-center">
         <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
-    </div>
+    </div>-->
 </div>
 <div class="container text-center" id="tasksDiv">
     <h3>Tasks </h3>
     <hr />
     <div class="table-responsive">
-        <table class='table table-responsive table-bordered text-left'>
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>ID</th>
@@ -63,7 +64,7 @@
                 <td th:text="${task.taskID}">1</td>
                 <td th:text="${task.name}">1</td>
                 <td th:text="${task.description}">1</td>
-                <td th:text="${task.status}">1</td>
+                <td id="st" th:text="${task.status}">1</td>
                 <td th:text="${task.hours_estimated}">1</td>
                 <td th:text="${task.hours_contributed}">1</td>
                 <td th:text="${task.projectID}">1</td>
@@ -74,6 +75,7 @@
             </tbody>
         </table>
     </div>
+    <div id="piechart"></div>
 </div>
 
 
