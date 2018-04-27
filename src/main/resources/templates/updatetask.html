@@ -64,7 +64,13 @@
         <div class="form-group">
             <label class="control-label col-md-3">Status</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="status" th:value="${task.status}"/>
+                <select th:value="${task.status}">
+                    <option type="text" class="form-control" name="status">Choose from the following:</option>
+                    <option>pending</option>
+                    <option>on-going</option>
+                    <option>complete</option>
+                    <option>overdue</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
