@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -27,15 +28,28 @@ public class MemberService {
         return memberRepository.findByUsername(username);
     }
 
+    public ArrayList<Member> getTeamMembersByTeamID(int teamid){
+        ArrayList<Member> teammembers = new ArrayList<>();
+        for (Member m : memberRepository.findAll()){
+            if (m.getTeamID() == teamid)
+            {
+                teammembers.add(m);
+            }
+        }
+        return teammembers;
+    }
+
     public Member findUserByName(String name){
         return memberRepository.findByName(name);
     }
 
+    public int findTeamIDByUsername(String username){
+       return memberRepository.findByUsername(username).getTeamID();
+
+    }
 
     public void saveMemeber(Member member){
         member.setPassword(bCryptPasswordEncoder.encode(member.getPassword()));
-        //Role memberRole = roleRepository.findByRole("admin");
-        //member.setRoles(new HashSet<Role>(Arrays.asList(memberRole)));
         memberRepository.save(member);
     }
 }

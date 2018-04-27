@@ -24,7 +24,7 @@
         <div class="navbar-collapse collapse">
             <ul>
                 <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
-                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/tasks">Dashboard</a></li>
+                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
                 <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
                 <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
                 <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a href="/tasks">Tasks</a></li>
@@ -47,20 +47,14 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Number</th>
-                <th>Email</th>
+
             </tr>
             </thead>
             <tbody>
-            <tr th:each="member : ${members}">
+            <tr th:each="team : ${teams}">
             <tr>
-                <td th:text="${member.teamID}">1</td>
-                <td th:text="${member.name}">1</td>
-                <td th:text="${member.telephone}">1</td>
-                <td th:text="${member.email}">1</td>
-                <td><a th:href="@{update-team(id=${member.teamID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                <td><a th:href="@{delete-team(id=${member.teamID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <td th:text="${team.name}">1</td>
+
             </tr>
             </tr>
             </tbody>

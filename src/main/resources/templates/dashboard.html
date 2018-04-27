@@ -76,27 +76,11 @@
                 }
                 </script>
             </tr>
+            </tr>
             </tbody>
         </table>
 
-        <table class="table table-responsive table-bordered text-left">
-            <thead>
-            <tr>
-                <th>Overdue Tasks</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <script type="text/javascript">
-                    if(status !complete && end_date <= GETDATE())
-                {
-                <td th:text="${task.name}">1</td>
-                <td th:text="${task.end_date}">1</td>
-                }
-                </script>
-            </tr>
-            </tbody>
-        </table>
+
     </div>
 </div>
 

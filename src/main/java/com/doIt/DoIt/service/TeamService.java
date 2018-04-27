@@ -35,7 +35,7 @@ public class TeamService {
         teamRepository.delete(teamID);
     }
 
-    public Team findTeam(int id){
+    public Team getTeamByID(int id){
         return teamRepository.findOne(id);
     }
 }
