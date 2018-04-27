@@ -9,8 +9,8 @@
 
     <title>DoIt! | Sprints</title>
 
-    <link th:href="@{css/style.css}" rel="stylesheet" />
     <link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{css/style.css}" rel="stylesheet" />
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
@@ -25,7 +25,7 @@
         <div class="navbar-collapse collapse">
             <ul>
                 <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
-                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/tasks">Dashboard</a></li>
+                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
                 <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
                 <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
                 <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a class ="active" href="/tasks">Tasks</a></li>
@@ -35,13 +35,14 @@
     </div>
 </div>
 
+
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
         <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
     </div>
 </div>
 <div class="container text-center" id="tasksDiv">
-    <h3>Tasks</h3>
+    <h3>Tasks </h3>
     <hr />
     <div class="table-responsive">
         <table class='table table-responsive table-bordered text-left'>
@@ -58,7 +59,7 @@
             </thead>
             <tbody>
             <tr th:each="task : ${tasks}">
-            <tr>
+            <tr th:if="${task.status}=='pending'" th:class="yellow">
                 <td th:text="${task.taskID}">1</td>
                 <td th:text="${task.name}">1</td>
                 <td th:text="${task.description}">1</td>

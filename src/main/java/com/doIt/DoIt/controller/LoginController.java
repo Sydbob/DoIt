@@ -8,7 +8,9 @@ import com.doIt.DoIt.entity.Member;
 import com.doIt.DoIt.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 
 @Controller
 public class LoginController {
@@ -28,20 +32,10 @@ public class LoginController {
         return "login";
     }
 
-    /*
-    @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-    public ModelAndView loginProcess(@Valid Member member, HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mav = null;
-        Member memberExists = memberService.findUserByUsername(member.getUsername());
-        if (null != memberExists) {
-            mav = new ModelAndView("tasks");
-            mav.addObject("member", member);
-        } else {
-            mav = new ModelAndView("login");
-            mav.addObject("message", "Username or Password is wrong!!");
-        }
-        return mav;
-    }*/
+    @RequestMapping(value = {"/access-denied"}, method = RequestMethod.GET)
+    public String accessDenied(){
+        return "accessdenied";
+    }
 
     @RequestMapping( value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
@@ -74,11 +68,14 @@ public class LoginController {
     }
 
     @RequestMapping(value="/home", method = RequestMethod.GET)
-    public ModelAndView home(){
+    public ModelAndView home(HttpServletRequest request){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Member member = memberService.findUserByUsername(auth.getName());
+        modelAndView.addObject("username", memberService.findUserByName(request.getUserPrincipal().getName()));
         modelAndView.setViewName("tasks");
         return modelAndView;
     }
+
+
 }

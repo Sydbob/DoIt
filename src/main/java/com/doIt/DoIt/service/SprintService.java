@@ -26,6 +26,17 @@ public class SprintService {
         return sprints;
     }
 
+    public List<Sprint> getAllSprintsByTeamID(int teamID){
+        List<Sprint> sprints = new ArrayList<>();
+        for (Sprint s: sprintRepository.findAll())
+        {
+            if (s.getTeamID() == teamID)
+            {
+            sprints.add(s);
+            }
+        }
+        return sprints;
+    }
 
     public void save(Sprint sprint){
         sprintRepository.save(sprint);

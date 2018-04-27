@@ -32,7 +32,9 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("select username as principal, password as credentials, true from member where username= ?")
-                .authoritiesByUsernameQuery("select username as principal, role as role from member where username = ?");
+                .authoritiesByUsernameQuery("select m.username, r.name from member m inner join member_roles mr on(m.username=mr.username) inner join role r on(mr.roleID=r.roleID) where m.username=?");
+                //select m.username, r.role from member m inner join member_roles mr on(m.username=mr.username) inner join role r on(mr.roleID=r.roleID) where m.username=?
+                //.authoritiesByUsernameQuery("select username as principal, roleID as role from member_roles where username = ?");
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception{
@@ -42,8 +44,9 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
                     .antMatchers("/").permitAll()
                     .antMatchers("/login").permitAll()
                     .antMatchers("/registration").permitAll()
-                    .antMatchers("/tasks").permitAll()
                     .antMatchers("/sprints").permitAll()
+                    .antMatchers("/access-denied").permitAll()
+                    .antMatchers("/tasks").permitAll()
                     .antMatchers("/projects").permitAll()
                     .antMatchers("/admin/**").hasAnyAuthority("admin").anyRequest()
                     .authenticated().and().csrf().disable().formLogin()

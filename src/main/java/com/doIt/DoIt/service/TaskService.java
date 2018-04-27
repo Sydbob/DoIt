@@ -24,6 +24,38 @@ public class TaskService {
         return tasks;
     }
 
+    public List<Task> getTasksByUsername(String username){
+        List<Task> myTasks = new ArrayList<>();
+        for(Task t: taskRepository.findAll())
+        {
+            if(t.getUsername().equals(username))
+            {
+                myTasks.add(t);
+            }
+        }
+        return myTasks;
+    }
+
+    public List<Task> getTasksBySprintID(int sprintID){
+        List<Task> tasks = new ArrayList<>();
+        for(Task t: taskRepository.findAll())
+        {
+            if(t.getSprintID() == sprintID)
+                tasks.add(t);
+        }
+        return tasks;
+    }
+
+    public List<Task> getTasksByProjectID(int projectID){
+        List<Task> tasks = new ArrayList<>();
+        for(Task t: taskRepository.findAll())
+        {
+            if(t.getProjectID() == projectID)
+                tasks.add(t);
+        }
+        return tasks;
+    }
+
     public void save(Task task){
         taskRepository.save(task);
     }
