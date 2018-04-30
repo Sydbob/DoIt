@@ -41,7 +41,7 @@ public class LoginController {
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
         Member member = new Member();
-        modelAndView.addObject("member",member);
+        modelAndView.addObject("member", member);
         modelAndView.setViewName("registration");
         return modelAndView;
     }
