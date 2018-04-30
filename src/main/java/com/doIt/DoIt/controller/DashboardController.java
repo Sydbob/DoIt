@@ -23,6 +23,7 @@ public class DashboardController {
     @RequestMapping( value = {"/dashboard", "/home"}, method = RequestMethod.GET)
     public String dashboard(Authentication auth, HttpServletRequest request){
         request.setAttribute("tasks", taskService.getTasksByUsername(auth.getName()));
+        request.setAttribute("username", auth.getName());
        return "dashboard";
     }
 }

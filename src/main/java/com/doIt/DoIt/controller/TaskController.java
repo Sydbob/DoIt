@@ -38,8 +38,9 @@ public class TaskController {
      * "tasks" attribute returns a list of all tasks that are in the database
      * admin-only accessible page*/
     @GetMapping("/admin/all-tasks")
-    public String allTasks(HttpServletRequest request){
+    public String allTasks(HttpServletRequest request, Authentication authentication){
         request.setAttribute("tasks", taskService.getAllTasks());
+        request.setAttribute("username", authentication.getName());
         request.setAttribute("mode", "MODE_TASKS");
         return "tasks";
     }
@@ -52,14 +53,16 @@ public class TaskController {
     public String deleteTask(@RequestParam int id, HttpServletRequest request, Authentication auth){
         taskService.delete(id);
         request.setAttribute("tasks", taskService.getTasksByUsername(auth.getName()));
+        request.setAttribute("username", auth.getName());
         request.setAttribute("mode", "MODE_TASKS");
         return "tasks";
     }
 
     /** Mapping for the new task option*/
     @GetMapping("/new-task")
-    public String newTask(HttpServletRequest request){
+    public String newTask(HttpServletRequest request, Authentication authentication){
         request.setAttribute("mode", "MODE_NEW");
+        request.setAttribute("username", authentication.getName());
         return "newtask";
     }
 
@@ -69,6 +72,7 @@ public class TaskController {
     public String saveTask(@ModelAttribute Task task, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
         taskService.save(task);
         request.setAttribute("tasks",taskService.getTasksByUsername(auth.getName()));
+        request.setAttribute("username", auth.getName());
         request.setAttribute("mode", "MODE_TASKS");
         return "tasks";
     }
@@ -76,8 +80,9 @@ public class TaskController {
     /** Mapping for the delete task option
      * "task" attribute returns a task based on the id provided */
     @GetMapping("/update-task")
-    public String updateTask(@RequestParam int id, HttpServletRequest request){
+    public String updateTask(@RequestParam int id, HttpServletRequest request, Authentication authentication){
         request.setAttribute("task", taskService.findTask(id));
+        request.setAttribute("username", authentication.getName());
         request.setAttribute("mode", "MODE_UPDATE");
         return "updatetask";
     }

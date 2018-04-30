@@ -27,6 +27,7 @@ public class TeamController {
     public String usersTeams(Authentication auth, HttpServletRequest request){
         request.setAttribute("myTeams", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
         request.setAttribute("members", memberService.getAllMembers());
+        request.setAttribute("username", auth.getName());
         request.setAttribute("mode", "MODE_TEAMS");
         return "teams";
     }
