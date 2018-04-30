@@ -7,7 +7,11 @@ import org.springframework.data.annotation.Transient;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
-
+/**
+ * Class that corresponds to Member entity in the database
+ * Data members are named accordingly to the entity attributes in the database
+ * Certain fields are annotated used @ annotations
+ */
 @Entity
 public class Member implements Serializable {
 
@@ -41,6 +45,7 @@ public class Member implements Serializable {
     @JoinTable(name = "member_roles", joinColumns = @JoinColumn(name = "username"), inverseJoinColumns = @JoinColumn(name = "roleID"))
     private Set<Role> roles;
 
+    //===============constructor(s)=================
     public Member() {}
     public Member(String username, String password, int teamID, String name, String email, String telephone) {
         this.username = username;
@@ -50,6 +55,8 @@ public class Member implements Serializable {
         this.email = email;
         this.telephone = telephone;
     }
+
+    //===============getters and setters=================
 
     public String getUsername() {
         return username;

@@ -22,6 +22,16 @@
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
+
+        <div class="welcome">
+            <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+        </div>
+
+        <div class="logout">
+            <a href="/login">Log out</a>
+            <img class="user" src="/images/user.png"/>
+        </div>
+
         <a href="/" class="navbar-brand">DoIt!</a>
         <div class="navbar-collapse collapse">
             <ul>
@@ -65,13 +75,13 @@
                 <option type="text" class="form-control" name="status">Choose from the following:</option>
                 <option>pending</option>
                 <option>on-going</option>
-                <option>complete</option>
+                <option>completed</option>
                 <option>overdue</option>
             </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Project ID (Enter 1 for now)</label>
+            <label class="control-label col-md-3">Project ID</label>
             <div class="col-md-7">
                 <input type="text" class="form-control" name="projectID"/>
             </div>

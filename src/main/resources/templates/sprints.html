@@ -22,6 +22,16 @@
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
+
+        <div class="welcome">
+            <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+        </div>
+
+        <div class="logout">
+            <a href="/login">Log out</a>
+            <img class="user" src="/images/user.png"/>
+        </div>
+
         <div class="navbar-collapse collapse">
             <ul>
                 <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
@@ -35,11 +45,15 @@
     </div>
 </div>
 
+<div class="main-body">
+
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
         <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
     </div>
 </div>
+
+    <div class = "container-box">
 <div class="container text-center" id="sprintsDiv">
     <h3>Sprints</h3>
     <hr />
@@ -70,8 +84,9 @@
         </table>
     </div>
 </div>
+    </div>
 
-
+</div>
 
 <!--<script th:src="@{js/jquery-1.11.1.min.js}"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
