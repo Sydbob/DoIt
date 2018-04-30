@@ -44,11 +44,12 @@
 
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
-        <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
+        <h2>My Projects</h2>
     </div>
 </div>
+
+<div class = "container-box">
 <div class="container text-center" id="projectsDiv">
-    <h3>Projects</h3>
     <hr />
     <div class="table-responsive">
         <table class='table table-responsive table-bordered text-left'>
@@ -70,7 +71,7 @@
                 <td th:text="${project.description}">1</td>
                 <td th:text="${project.start_date}">1</td>
                 <td th:text="${project.end_date}">1</td>
-                <td th:text="${project.status}">1</td>
+                <td th:text="${project.status}" th:class="${task.status}=='pending' ? 'yellow' : (${task.status}=='overdue' ? 'red' : (${task.status}=='completed' ? 'green' : 'white'))">1</td>
                 <td><a th:href="@{update-project(id=${project.projectID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                 <td><a th:href="@{delete-project(id=${project.projectID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
@@ -78,6 +79,7 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 
 
