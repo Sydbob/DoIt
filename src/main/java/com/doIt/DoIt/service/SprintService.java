@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Service class for sprint entity
+ * This class has all the methods involving sprints
+ */
 @Service
 @Transactional
 public class SprintService {
@@ -26,6 +29,7 @@ public class SprintService {
         return sprints;
     }
 
+    //returns all sprints that a particular team is on
     public List<Sprint> getAllSprintsByTeamID(int teamID){
         List<Sprint> sprints = new ArrayList<>();
         for (Sprint s: sprintRepository.findAll())

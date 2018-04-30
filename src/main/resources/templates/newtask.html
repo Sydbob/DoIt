@@ -22,6 +22,16 @@
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
+
+        <div class="welcome">
+            <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+        </div>
+
+        <div class="logout">
+            <a href="/login">Log out</a>
+            <img class="user" src="/images/user.png"/>
+        </div>
+
         <a href="/" class="navbar-brand">DoIt!</a>
         <div class="navbar-collapse collapse">
             <ul>
@@ -63,17 +73,29 @@
             <div class="col-md-7">
             <select>
                 <option type="text" class="form-control" name="status">Choose from the following:</option>
-                <option>pending</option>
-                <option>on-going</option>
-                <option>completed</option>
-                <option>overdue</option>
+                <option value="pending">Pending</option>
+                <option value="on-going">On-going</option>
+                <option value="completed">Completed</option>
+                <option value="overdue">Overdue</option>
             </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Project ID (Enter 1 for now)</label>
+            <label class="control-label col-md-3">Project ID</label>
             <div class="col-md-7">
                 <input type="text" class="form-control" name="projectID"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Sprint ID</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="sprintID"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Person assigned(Enter username)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="username"/>
             </div>
         </div>
         <div class="form-group">
@@ -88,7 +110,18 @@
                 <input type="text" class="form-control" name="hours_contributed"/>
             </div>
         </div>
-
+        <div class="form-group">
+            <label class="control-label col-md-3">Start Date</label>
+            <div class="col-md-7">
+                <input type="datetime-local" class="form-control" name="start_date"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">End Date</label>
+            <div class="col-md-7">
+                <input type="datetime-local" class="form-control" name="end_date"/>
+            </div>
+        </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Save"/>
         </div>

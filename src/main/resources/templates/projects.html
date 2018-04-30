@@ -23,6 +23,16 @@
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
+
+        <div class="welcome">
+            <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+        </div>
+
+        <div class="logout">
+            <a href="/login">Log out</a>
+            <img class="user" src="/images/user.png"/>
+        </div>
+
         <div class="navbar-collapse collapse">
             <ul>
                 <img class="logo" src="/images/logo2.png" title="&quot;Do It Logo&quot;"/>
@@ -41,6 +51,8 @@
         <h2>My Projects</h2>
     </div>
 </div>
+
+<div class = "container-box">
 <div class="container text-center" id="projectsDiv">
     <hr />
     <div class="table-responsive">
@@ -63,7 +75,7 @@
                 <td th:text="${project.description}">1</td>
                 <td th:text="${project.start_date}">1</td>
                 <td th:text="${project.end_date}">1</td>
-                <td th:text="${project.status}" th:class="${task.status}=='pending' ? 'yellow' : (${task.status}=='overdue' ? 'red' : (${task.status}=='completed' ? 'green' : 'white'))">1</td>
+                <td th:text="${project.status}" th:class="${project.status}=='pending' ? 'yellow' : (${project.status}=='overdue' ? 'red' : (${project.status}=='completed' ? 'green' : 'white'))">1</td>
                 <td><a th:href="@{update-project(id=${project.projectID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                 <td><a th:href="@{delete-project(id=${project.projectID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
@@ -71,6 +83,7 @@
             </tbody>
         </table>
     </div>
+</div>
 </div>
 
 

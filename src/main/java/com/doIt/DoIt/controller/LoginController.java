@@ -1,25 +1,18 @@
 package com.doIt.DoIt.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-
 import com.doIt.DoIt.entity.Member;
 import com.doIt.DoIt.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.security.Principal;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @Controller
 public class LoginController {
@@ -28,8 +21,12 @@ public class LoginController {
     private MemberService memberService;
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
-    public String login(){
-        return "login";
+    public ModelAndView login(){
+        ModelAndView modelAndView = new ModelAndView();
+        Member member= new Member();
+        modelAndView.addObject("member", member);
+        modelAndView.setViewName("login");
+        return modelAndView;
     }
 
     @RequestMapping(value = {"/access-denied"}, method = RequestMethod.GET)
@@ -41,7 +38,7 @@ public class LoginController {
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
         Member member = new Member();
-        modelAndView.addObject("member",member);
+        modelAndView.addObject("member", member);
         modelAndView.setViewName("registration");
         return modelAndView;
     }
