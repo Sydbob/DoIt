@@ -12,10 +12,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-/**
- * Service class for member entity
- * This class has all the methods involving members
- */
+
 @Service("memberService")
 @Transactional
 public class MemberService {
@@ -25,7 +22,6 @@ public class MemberService {
     @Autowired
     private RoleRepository roleRepository;
 
-    //password encoder used for password security
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Member findUserByUsername(String username){
@@ -39,14 +35,6 @@ public class MemberService {
             {
                 teammembers.add(m);
             }
-        }
-        return teammembers;
-    }
-
-    public ArrayList<Member> getAllMembers(){
-        ArrayList<Member> teammembers = new ArrayList<>();
-        for (Member m : memberRepository.findAll()){
-            teammembers.add(m);
         }
         return teammembers;
     }

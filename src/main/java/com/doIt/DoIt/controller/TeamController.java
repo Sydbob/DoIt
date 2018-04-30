@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**Controller for the team entity.
-Handles all requests involving team and provided page mapping for the entity as well. */
 @Controller
 public class TeamController {
 
@@ -19,15 +17,20 @@ public class TeamController {
     @Autowired
     private MemberService memberService;
 
+    /*
+    @GetMapping("/teams")
+    public String usersTeams(HttpServletRequest request){
+        request.setAttribute("teams", teamService.getAllTeams());
+        request.setAttribute("mode", "MODE_TEAMS");
+        return "teams";
+    }*/
 
-  /** Mapping for the team page
-  * "myTeams" attribute returns a list of team that the logged in user is a part of at the moment
-  * "members" attribute returns a list of all teams/members */
+
+    //my teams
     @GetMapping("/teams")
     public String usersTeams(Authentication auth, HttpServletRequest request){
-        request.setAttribute("myTeams", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
-        request.setAttribute("members", memberService.getAllMembers());
-        request.setAttribute("username", auth.getName());
+        request.setAttribute("teams", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
+        request.setAttribute("members", memberService);
         request.setAttribute("mode", "MODE_TEAMS");
         return "teams";
     }
