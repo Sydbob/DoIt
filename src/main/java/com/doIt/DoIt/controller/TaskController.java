@@ -14,22 +14,13 @@ import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
 
-//notes: use rest controller, return response obj not Strings
+
 @Controller
 public class TaskController {
 
     @Autowired
     private TaskService taskService;
 
-
-    /*
-    @GetMapping("/tasks")
-    public String allTasks(@RequestParam String username, HttpServletRequest request){
-        taskService.getTasksByUsername(username);
-        request.setAttribute("tasks", taskService.getTasksByUsername(username));
-        request.setAttribute("mode", "MODE_TASKS");
-        return "tasks";
-    }*/
 
 
     @GetMapping("/tasks")
