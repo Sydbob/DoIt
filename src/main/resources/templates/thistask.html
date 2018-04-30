@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Cache-Control" content="no-cache" />
-    <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT"/>
 
     <title>DoIt! | Task</title>
 
-    <link th:href="@{css/style.css}" rel="stylesheet" />
-    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{css/style.css}" rel="stylesheet"/>
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet"/>
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
@@ -19,7 +19,50 @@
 
 </head>
 <body>
-<h1>Hello World</h1>
-
+<div role="navigation">
+    <div class="navbar navbar-inverse">
+        <a href="/" class="navbar-brand">DoIt!</a>
+        <div class="navbar-collapse collapse">
+            <ul>
+                <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
+                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
+                <li><img class="navigation" src="/images/sidebar/project.png"/><a href="/projects">Projects</a></li>
+                <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
+                <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a class="active"
+                                                                                     href="/tasks">Tasks</a></li>
+                <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container invisible-at-first" id="homeDiv">
+    <div class="jumbotron text-center">
+        <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
+    </div>
+</div>
+<div class="container text-center" id="information">
+    <h3>View Task</h3>
+    <div method="GET" id="task-info">
+        <div class="form-group">
+            <label class="control-label col-md-3">Name</label>
+            <div class="col-md-7">
+                <p th:value="${task.name}"></p>
+            </div>
+        </div>
+        <label class="control-label col-md-3">Description</label>
+        <div class="col-md-7">
+            <p th:value="${task.description}"/>
+        </div>
+        <label class="control-label col-md-3">Status</label>
+        <div class="col-md-7">
+            <p th:value="${task.status}"/>
+        </div>
+    </div>
+</div>
+<script src="bootstrap.min.js"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
 </body>
+<footer>
+    <p>&copy; Copyright 2018. DoIt Ltd. All rights reserved. DoIt is a registered trademark. No content may be downloaded for commercial or non-commercial usage.</p>
+</footer>
 </html>

@@ -66,6 +66,12 @@ public class TaskController {
         return "updatetask";
     }
 
+    @GetMapping("/view-task")
+    public String viewTask(@RequestParam int id, HttpServletRequest request) {
+        request.setAttribute("task", taskService.findTask(id));
+        return "thistask";
+    }
+
     //Addition validation check method, T Smith 3/4/18 unsure on  "/check-task" and "redirect:/results"
     @PostMapping("/check-task")
     public String checkTaskInfo(@Valid Task task, BindingResult bindingResult){
