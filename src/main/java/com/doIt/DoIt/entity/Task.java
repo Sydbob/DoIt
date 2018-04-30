@@ -2,6 +2,7 @@ package com.doIt.DoIt.entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,7 +20,6 @@ public class Task implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @NotNull
     private int taskID;
 
     private int sprintID;
@@ -34,56 +34,38 @@ public class Task implements Serializable {
     @Size(max=300)
     private String description;
 
-    @NotNull
-    @Size(max=30)
     private String status;
-
-    @NotNull
     private int hours_contributed;
-
-    @NotNull
     private int hours_estimated;
-
-    @NotNull
     private int projectID;
 
     @Column(name = "start_date", nullable = false)
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime start_date;
 
     @Column(name = "end_date", nullable = false)
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime end_date;
 
 
     //===============constructor(s)=================
     public Task() {}
-    public Task(String name, String description, String status, int hours_contributed, int hours_estimated, int projectID) {
-        super();
 
-        if(name.length() > 50 || name == null) {
-            throw new IllegalArgumentException("Task name must be specified as a string under 50 characters.");
-        }
-        else this.name = name;
-
-        if(description.length() > 300 || description == null) {
-            throw new IllegalArgumentException("Task description must be specified as a string under 300 characters.");
-        }
-        else this.description = description;
-
-        if(status.length() > 30 || status == null) {
-            throw new IllegalArgumentException("Task status must be specified as a string under 30 characters.");
-        }
-        else this.status = status;
-
+    public Task(int taskID, int sprintID, String name, String username, String description, String status, int hours_contributed, int hours_estimated, int projectID, LocalDateTime start_date, LocalDateTime end_date) {
+        this.taskID = taskID;
+        this.sprintID = sprintID;
+        this.name = name;
+        this.username = username;
+        this.description = description;
+        this.status = status;
         this.hours_contributed = hours_contributed;
-
         this.hours_estimated = hours_estimated;
-
-
         this.projectID = projectID;
+        this.start_date = start_date;
+        this.end_date = end_date;
     }
-
 
     //=====================getters and setters========================
     public String getUsername() {
@@ -100,6 +82,22 @@ public class Task implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public LocalDateTime getStart_date() {
+        return start_date;
+    }
+
+    public void setStart_date(LocalDateTime start_date) {
+        this.start_date = start_date;
+    }
+
+    public LocalDateTime getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(LocalDateTime end_date) {
+        this.end_date = end_date;
     }
 
     public String getDescription() {
@@ -149,10 +147,7 @@ public class Task implements Serializable {
     }
 
     public void setStatus(String status) {
-        if(status.length() > 30 || status == null) {
-            throw new IllegalArgumentException("Task status must be specified as a string under 30 characters.");
-        }
-        else this.status = status;
+        this.status = status;
     }
 
 

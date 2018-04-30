@@ -14,6 +14,19 @@
 
     <link href="@{css/login.css}" rel="stylesheet" />
 
+    <link th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" />
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+
+
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
@@ -25,30 +38,66 @@
 </head>
 
 <body>
-<div class="bg">
+<div class="login-page">
+    <!-- REGISTRATION PAGE BELOW -->
+    <div class="form">
+        <img class="logo" src="/images/logo.png" title="&quot;Do It Logo&quot;"/>
+
+        <form autocomplete="off" action="#" th:action="@{/registration}"
+              th:object="${member}" method="post" class="form-horizontal">
+
+            <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                   class="validation-message"></label>
+            <input type="text" th:field="*{username}" placeholder="UserName"
+                   class="form-control" />
+
+            <label	th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                      class="validation-message"></label>
+            <input type="text" th:field="*{name}"
+                   placeholder="Full Name" class="form-control" />
+
+            <input type="text" th:field="*{email}" placeholder="Email"
+                   class="form-control" /> <label
+                th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                class="validation-message"></label>
+
+            <input type="password" th:field="*{password}"
+                   placeholder="Password" class="form-control" /> <label
+                th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                class="validation-message"></label>
+
+            <button class="btn btn-md btn-warning btn-block" type="Submit">Back To Login</button>
+            <p class="message">Already Registered? <a href="#" >Login</a></p>
+
+
+        </form>
 
 
 
-<div class="container">
-    <img class="logo" src="/images/logo.png" title="&quot;Do It Logo&quot;"/>
-    <form th:action="@{/login}" method="POST" class="form-signin">
 
-        <input type="text" th:placeholder="Username" id="username" name="username"
-               class="form-control" /> <br/>
-        <input type="password"  th:placeholder="Password"
-               id="password" name="password" class="form-control"/> <br />
+        <!--LOGIN FORM BELOW-->
+        <form th:action="@{/login}" method="POST" class="form-signin">
 
-        <div align="center" th:if="${param.error}">
-            <p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
-    </form>
-    <form th:action="@{/registration}" method="GET">
-        <button class="btn btn-md btn-warning btn-block" type="Submit">Register</button>
-    </form>
+            <input type="text"  th:placeholder="Username" id="username" name="username"
+                   class="form-control" />
+            <input type="text"  th:placeholder="Password"
+                   id="password" name="password" class="form-control" />
 
+            <div align="center" th:if="${param.error}">
+                <p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
+            </div>
+            <button class="btn btn-lg btn-primary " name="Submit" value="Login" type="Submit" th:text="Login">Login</button>
+            <p class="message">Not Registered? <a href="#" >Register</a></p>
+
+        </form>
+
+    </div>
 </div>
 
-</div>
+<script>
+    $('.message a').click(function(){
+        $('form').animate({height:"toggle",opacity:"toggle"},"slow");
+    })
+</script>
 </body>
 </html>

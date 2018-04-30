@@ -88,5 +88,13 @@ public class TaskController {
     }
 
 
+    @GetMapping("/view-task")
+    public String viewTask(@RequestParam int id, HttpServletRequest request) {
+        request.setAttribute("task", taskService.findTask(id));
+        return "thistask";
+    }
+
+ 
+
 
 }
