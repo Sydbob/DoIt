@@ -22,27 +22,37 @@
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
+
+        <div class="welcome">
+            <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+        </div>
+        
+        <div class="logout">
+            <a href="/login">Log out</a>
+            <img class="user" src="/images/user.png"/>
+        </div>
+
         <div class="navbar-collapse collapse">
             <ul>
                 <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
-                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a class ="active" href="/dashboard">Dashboard</a></li>
+                <li><img class="navigation" src="/images/sidebar/dashboardactive.png"/><a class ="active" href="/dashboard">Dashboard</a></li>
                 <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
                 <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-                <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a href="/tasks">Tasks</a></li>
-                <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
+                <li><img class="navigation" src="/images/sidebar/task.png"/><a href="/tasks">Tasks</a></li>
+                <li><img class="navigation" src="/images/sidebar/teams.png"/><a href="/teams">Teams</a></li>
             </ul>
         </div>
     </div>
 </div>
 
+<div class="main-body">
 
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
-        <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
+        <h2>My Dashboard</h2>
     </div>
 </div>
 <div class="container text-center" id="tasksDiv">
-    <h3>Dashboard </h3>
     <hr />
     <div class="table-responsive">
         <table class='table table-responsive table-bordered text-left'>
@@ -84,7 +94,7 @@
     </div>
 </div>
 
-
+</div>
 
 
 
