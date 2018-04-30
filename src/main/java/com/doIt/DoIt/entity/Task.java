@@ -10,11 +10,6 @@ import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- * Class that corresponds to Task entity in the database
- * Data members are named accordingly to the entity attributes in the database
- * Certain fields are annotated used @ annotations
- */
 @Entity(name = "Task")
 public class Task implements Serializable {
 
@@ -49,9 +44,8 @@ public class Task implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime end_date;
 
-
-    //===============constructor(s)=================
     public Task() {}
+
 
     public Task(int taskID, int sprintID, String name, String username, String description, String status, int hours_contributed, int hours_estimated, int projectID, LocalDateTime start_date, LocalDateTime end_date) {
         this.taskID = taskID;
@@ -67,7 +61,9 @@ public class Task implements Serializable {
         this.end_date = end_date;
     }
 
+
     //=====================getters and setters========================
+
     public String getUsername() {
         return username;
     }
