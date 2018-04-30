@@ -108,6 +108,12 @@ tr:hover {
 
     background-color: #ffd9ed;
 }
+
+#HCB_comment_box {
+    width: 800px;
+    float: right;
+}
+
 th {
 
     color: white;
