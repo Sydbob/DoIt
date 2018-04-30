@@ -8,10 +8,6 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Service class for task entity
- * This class has all the methods involving tasks
- */
 @Service
 @Transactional
 public class TaskService {
@@ -28,7 +24,6 @@ public class TaskService {
         return tasks;
     }
 
-    //returns all tasks of a specific person
     public List<Task> getTasksByUsername(String username){
         List<Task> myTasks = new ArrayList<>();
         for(Task t: taskRepository.findAll())
@@ -41,7 +36,6 @@ public class TaskService {
         return myTasks;
     }
 
-    //returns all tasks on a particular sprint
     public List<Task> getTasksBySprintID(int sprintID){
         List<Task> tasks = new ArrayList<>();
         for(Task t: taskRepository.findAll())
@@ -52,7 +46,6 @@ public class TaskService {
         return tasks;
     }
 
-    //returns all that on the specific project
     public List<Task> getTasksByProjectID(int projectID){
         List<Task> tasks = new ArrayList<>();
         for(Task t: taskRepository.findAll())

@@ -17,19 +17,12 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
+
 </head>
 
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
-    <div class="welcome">
-        <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
-    </div>
-        <div class="logout">
-            <a href="/login">Log out</a>
-            <img class="user" src="/images/user.png"/>
-        </div>
-
         <div class="navbar-collapse collapse">
             <ul>
                 <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
@@ -43,23 +36,14 @@
     </div>
 </div>
 
-<div class="main-body">
 
 <div class="container invisible-at-first" id="homeDiv">
     <!--<div class="jumbotron text-center">
         <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
     </div>-->
 </div>
-
-    <div class="container invisible-at-first" id="homeDiv">
-        <div class="jumbotron text-center">
-            <h2>My Tasks</h2>
-        </div>
-    </div>
-
-    <div class = "container-box">
-
 <div class="container text-center" id="tasksDiv">
+    <h3>Tasks </h3>
     <hr />
     <div class="table-responsive">
         <table class="table table-striped">
@@ -76,11 +60,11 @@
             </thead>
             <tbody>
             <tr th:each="task : ${tasks}">
-            <tr>
+            <tr th:class="${task.status}=='pending' ? 'yellow' : (${task.status}=='overdue' ? 'red' : (${task.status}=='completed' ? 'green' : 'white'))">
                 <td th:text="${task.taskID}">1</td>
                 <td th:text="${task.name}">1</td>
                 <td th:text="${task.description}">1</td>
-                <td th:text="${task.status}" th:class="${task.status}=='pending' ? 'yellow' : (${task.status}=='overdue' ? 'red' : (${task.status}=='completed' ? 'green' : 'white'))">1</td>
+                <td id="st" th:text="${task.status}">1</td>
                 <td th:text="${task.hours_estimated}">1</td>
                 <td th:text="${task.hours_contributed}">1</td>
                 <td th:text="${task.projectID}">1</td>
@@ -94,15 +78,14 @@
     <div id="piechart"></div>
 </div>
 
-</div>
-</div>
+
 
 <!--<script th:src="@{js/jquery-1.11.1.min.js}"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 
 <script src="bootstrap.min.js"></script>
-<script th:src="@{js/task.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
 </body>
 <footer>
     <p>&copy; Copyright 2018. DoIt Ltd. All rights reserved. DoIt is a registered trademark. No content may be downloaded for commercial or non-commercial usage.</p>
