@@ -26,11 +26,11 @@
         <div class="navbar-collapse collapse">
             <ul>
                 <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
-                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/tasks">Dashboard</a></li>
-                <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/tasks">Projects</a></li>
+                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
+                <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
                 <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-                <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a class ="active" href="/all-tasks">Tasks</a></li>
-                <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/tasks">Teams</a></li>
+                <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a class ="active" href="/tasks">Tasks</a></li>
+                <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
             </ul>
         </div>
     </div>
@@ -64,7 +64,13 @@
         <div class="form-group">
             <label class="control-label col-md-3">Status</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="status" th:value="${task.status}"/>
+                <select th:value="${task.status}">
+                    <option type="text" class="form-control" name="status">Choose from the following:</option>
+                    <option>pending</option>
+                    <option>on-going</option>
+                    <option>complete</option>
+                    <option>overdue</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
