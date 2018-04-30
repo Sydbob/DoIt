@@ -1,6 +1,10 @@
 body {
-    margin: 0;
+    margin-left: 0;
     padding: 0;
+}
+
+div.main-body {
+    margin-left: 15%;
 }
 
 img.navigation{
@@ -84,7 +88,7 @@ img.user {
 footer {
     text-align: right;
     color: white;
-    position:absolute;
+    position:fixed;
     bottom:0;
     width:100%;
     height:60px;
