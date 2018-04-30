@@ -28,8 +28,7 @@
                 <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
                 <li><img class="navigation" src="/images/sidebar/project.png"/><a href="/projects">Projects</a></li>
                 <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-                <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a class="active"
-                                                                                     href="/tasks">Tasks</a></li>
+                <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a class="active" href="/tasks">Tasks</a></li>
                 <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
             </ul>
         </div>
@@ -46,16 +45,16 @@
         <div class="form-group">
             <label class="control-label col-md-3">Name</label>
             <div class="col-md-7">
-                <p th:value="${task.name}"></p>
+                <p type="text" class="form-control" name="name" th:text="${task.name}"></p>
             </div>
         </div>
         <label class="control-label col-md-3">Description</label>
         <div class="col-md-7">
-            <p th:value="${task.description}"/>
+            <p type="text" class="form-control" name="name" th:text="${task.description}"></p>
         </div>
         <label class="control-label col-md-3">Status</label>
         <div class="col-md-7">
-            <p th:value="${task.status}"/>
+            <p type="text" class="form-control" name="name" th:text="${task.status}"></p>
         </div>
     </div>
 </div>
