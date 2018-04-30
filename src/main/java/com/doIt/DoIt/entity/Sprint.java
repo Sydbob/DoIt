@@ -35,7 +35,7 @@ public class Sprint implements Serializable{
     private LocalDateTime start_date;
 
    //===============constructor(s)=================
-
+    public Sprint() {}
     public Sprint(int sprintID, int projectID, int teamID, LocalDateTime deadline, LocalDateTime start_date) {
         this.sprintID = sprintID;
         this.projectID = projectID;

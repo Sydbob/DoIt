@@ -21,7 +21,6 @@ public class Role {
     private String description;
     //===============constructor(s)=================
     public Role() {}
-
     public Role(int roleID, String name, String description) {
         this.roleID = roleID;
         this.name = name;

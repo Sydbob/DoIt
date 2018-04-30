@@ -34,7 +34,6 @@ public class Project implements Serializable{
 
     //===============constructor(s)=================
     public Project() {}
-
     public Project(int projectID, String title, String description, LocalDateTime start_date, LocalDateTime end_date, String status) {
         this.projectID = projectID;
         this.title = title;

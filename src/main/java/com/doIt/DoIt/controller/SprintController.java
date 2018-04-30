@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**Controller for the sprint entity.
+ Handles all requests involving sprint and provided page mapping for the entity as well. */
 @Controller
 public class SprintController {
 
@@ -23,6 +25,8 @@ public class SprintController {
     @Autowired
     private MemberService memberService;
 
+    /** Mapping for the sprints page
+     * "sprints" attribute returns a list of logged-in user's sprints (based on their team id since sprints are assigned to teams)*/
     @GetMapping("/sprints")
     public String usersSprints(Authentication auth, HttpServletRequest request){
         request.setAttribute("sprints", sprintService.getAllSprintsByTeamID(memberService.findUserByUsername(auth.getName()).getTeamID()));
@@ -30,6 +34,9 @@ public class SprintController {
         return "sprints";
     }
 
+    /** Mapping for the all sprints page
+     * "sprints" attribute returns a list of all sprints in the database
+     * admin-accessible only*/
     @GetMapping("/admin/all-sprints")
     public String allSprints(HttpServletRequest request){
         request.setAttribute("sprints", sprintService.getAllSprints());
@@ -37,28 +44,36 @@ public class SprintController {
         return "sprints";
     }
 
+    /** Mapping for the delete sprint option
+     * "sprints" attribute returns a list of logged-in user's sprints
+     * deletes a sprint based on the id provided*/
     @GetMapping("/delete-sprint")
-    public String deleteSprint(@RequestParam int id, HttpServletRequest request){
+    public String deleteSprint(@RequestParam int id, HttpServletRequest request, Authentication auth){
         sprintService.delete(id);
-        request.setAttribute("sprints", sprintService.getAllSprints());
+        request.setAttribute("sprints", sprintService.getAllSprintsByTeamID(memberService.findUserByUsername(auth.getName()).getTeamID()));
         request.setAttribute("mode", "MODE_SPRINTS");
         return "sprints";
     }
 
+    /** Mapping for the new sprint option*/
     @GetMapping("/new-sprint")
     public String newSprint (HttpServletRequest request){
         request.setAttribute("mode", "MODE_NEW");
         return "newsprint";
     }
 
+    /** Mapping for the save sprint option
+     * "sprints" attribute returns a list of logged-in user's sprints*/
     @PostMapping("/save-sprint")
-    public String saveSprint(@ModelAttribute Sprint sprint, BindingResult bindingResult, HttpServletRequest request){
+    public String saveSprint(@ModelAttribute Sprint sprint, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
         sprintService.save(sprint);
-        request.setAttribute("sprints", sprintService.getAllSprints());
+        request.setAttribute("sprints", sprintService.getAllSprintsByTeamID(memberService.findUserByUsername(auth.getName()).getTeamID()));
         request.setAttribute("mode", "MODE_SPRINTS");
         return "sprints";
     }
 
+    /** Mapping for the delete sprint option
+     * "sprint" attribute returns a sprint based on the id*/
     @GetMapping("/update-sprint")
     public String updateSprint(@RequestParam int id, HttpServletRequest request){
         request.setAttribute("sprint", sprintService.findSprint(id));

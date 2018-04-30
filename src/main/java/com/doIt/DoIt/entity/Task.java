@@ -58,7 +58,6 @@ public class Task implements Serializable {
 
     //===============constructor(s)=================
     public Task() {}
-
     public Task(String name, String description, String status, int hours_contributed, int hours_estimated, int projectID) {
         super();
 
