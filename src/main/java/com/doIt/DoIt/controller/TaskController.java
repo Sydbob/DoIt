@@ -28,6 +28,7 @@ public class TaskController {
     @GetMapping("/tasks")
     public String usersTasks(Authentication auth, HttpServletRequest request){
         request.setAttribute("tasks", taskService.getTasksByUsername(auth.getName()));
+        request.setAttribute("username", auth.getName());
         request.setAttribute("mode", "MODE_TASKS");
         return "tasks";
     }
