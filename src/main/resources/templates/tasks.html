@@ -17,16 +17,17 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
-
 </head>
 
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
-
+    <div class="welcome">
+        <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+    </div>
         <div class="logout">
             <a href="/login">Log out</a>
-            <img class="user" src="/images/sidebar/user.png"/>
+            <img class="user" src="/images/user.png"/>
         </div>
 
         <div class="navbar-collapse collapse">

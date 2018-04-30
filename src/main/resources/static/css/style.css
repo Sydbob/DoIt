@@ -101,8 +101,11 @@ th {
     background-color: #FD038A;
 }
 
+/*
+    Style for logout
+ */
 .logout {
-    text-align: left;
+    text-align: right;
 }
 
 .logout a {
@@ -110,6 +113,20 @@ th {
 }
 
 .logout a:hover {
-    color: white;
+    color: #FD038A;
     text-decoration: underline;
+}
+
+
+/*
+    Style for welcome message
+*/
+.welcome {
+    padding: 5px;
+    padding-left: 20px;
+    text-align: right;
+}
+
+.welcome p {
+    color:  #FD038A;
 }
