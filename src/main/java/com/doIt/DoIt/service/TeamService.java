@@ -8,6 +8,10 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Service class for team entity
+ * This class has all the methods involving team
+ */
 @Service
 @Transactional
 public class TeamService {
@@ -25,7 +29,6 @@ public class TeamService {
         return teams;
     }
 
-   
 
     public void save(Team team){
         teamRepository.save(team);
