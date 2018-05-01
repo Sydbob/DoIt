@@ -111,7 +111,7 @@
 
     <div class="flex-container" th:each = "team : ${teams}">
         <div class="limiter">
-            <h3>[Thyme Leaf - Team name goes here]</h3><br/>
+            <h3>Team Number:</h3><h3 th:text = "${team.teamID}"></h3><br/>
             <h6>[Thyme Leaf - Project name goes here]</h6><br/>
             <div class="container-table100">
                 <div class="wrap-table100">
@@ -127,18 +127,14 @@
                                 </thead>
                             </table>
                         </div>
-
-                        <!--     th:each="member : ${selected team}" -->
-
-                        <div class="table100-body js-pscroll">
+                        <div class="table100-body js-pscroll" th:each = "member : ${members}">
                             <table>
                                 <tbody>
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">[Thyme Leaf - Member name goes here]</td>
-                                    <td class="cell100 column2">[Thyme Leaf - Member number goes here]</td>
-                                    <td class="cell100 column3">[Thyme Leaf - Member email goes here]</td>
+                                <tr class="row100 body" th:if = "${member.teamID == team.teamID}">
+                                    <td class="cell100 column1" th:text="${member.name}">[Thyme Leaf - Member name goes here]</td>
+                                    <td class="cell100 column2" th:text="${member.telephone}">[Thyme Leaf - Member number goes here]</td>
+                                    <td class="cell100 column3" th:text="${member.email}">[Thyme Leaf - Member email goes here]</td>
                                 </tr>
-
                                 </tbody>
                             </table>
                         </div>
