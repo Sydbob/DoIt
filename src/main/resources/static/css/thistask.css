@@ -1,16 +1,76 @@
+/*------------------Task information ---------------------*/
 #information {
     margin: auto;
     background-color: #eee;
     min-width: 510px;
     max-width: 960px;
-    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 3px;
+    border-radius: 10px;
+}
+
+#information h3 {
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    text-align:center;
+    border-bottom: solid 1px #84858b;
 }
 
 #information label {
     display: inline;
+    float: left;
+    font-weight: bold;
+    margin-right: 20px;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
 }
 
+.col-md-7 {
+    border-bottom: solid 1px #84858b;
+    padding-top: 10px;
+}
+
+.overdue {
+    font-size: 4em;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial;
+    animation-name: flash-red;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+.completed {
+    font-size: 4em;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial;
+    animation-name: flash-green;
+    animation-duration: 0.8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+.none{}
+
+@keyframes flash-red {
+    from {color: red;}
+    to {color: black;}
+}
+
+@keyframes flash-green {
+    from {color: #66ff33;}
+    to {color: black;}
+}
+
+/*-----------------------Comment Section --------------------------*/
+
 #HCB_comment_box {
+    margin: auto;
     width: 800px;
-    float: right;
+    min-width: 510px;
+    max-width: 960px;
 }
