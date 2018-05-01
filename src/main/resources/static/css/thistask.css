@@ -5,14 +5,16 @@
     min-width: 510px;
     max-width: 960px;
     padding-bottom: 20px;
-    padding-top: 3px;
     border-radius: 10px;
 }
 
 #information h3 {
     font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
     text-align:center;
-    border-bottom: solid 1px #84858b;
+    background-color: #1b4a54;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
 }
 
 #information label {
