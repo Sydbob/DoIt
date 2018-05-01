@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,7 +23,7 @@
 
 </head>
 
-<html>
+
 <body>
 
 <div class="navigation">
@@ -49,22 +49,21 @@
 
 <div class="main-body">
 
+    <!--
+
+    ================MY TEAM==================
+
+     -->
+
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
         <h2>My Teams</h2>
     </div>
 </div>
-
-    <!-- Pseudo code only, but this is what is needs to look like...
-
-    th:each="team : ${teams}"
-
-    -->
-
-    <div class="flex-container">
+    <div class="flex-container"  >
         <div class="limiter">
-            <h3>[Thyme Leaf - Team name goes here]</h3><br/>
-            <h6>[Thyme Leaf - Project name goes here]</h6><br/>
+            <h3>Team Number: </h3><h3 th:text ="${myteamID}"></h3><br/>
+            <h6 th:text = "${myproject.title}"></h6><br/>
             <div class="container-table100">
                 <div class="wrap-table100">
                     <div class="table100 ver1 m-b-110">
@@ -80,15 +79,13 @@
                             </table>
                         </div>
 
-                        <!--     th:each="member : ${selected team}" -->
-
-                        <div class="table100-body js-pscroll">
+                        <div class="table100-body js-pscroll" th:each = "member: ${myteam}">
                             <table>
                                 <tbody>
                                 <tr class="row100 body">
-                                    <td class="cell100 column1">[Thyme Leaf - Member name goes here]</td>
-                                    <td class="cell100 column2">[Thyme Leaf - Member number goes here]</td>
-                                    <td class="cell100 column3">[Thyme Leaf - Member email goes here]</td>
+                                    <td class="cell100 column1" th:text="${member.name}">1</td>
+                                    <td class="cell100 column2" th:text="${member.telephone}">1</td>
+                                    <td class="cell100 column3" th:text="${member.email}">1</td>
                                 </tr>
 
                                 </tbody>
@@ -99,20 +96,20 @@
             </div>
         </div>
     </div>
-
     <div class="container invisible-at-first" id="homeDiv">
         <div class="jumbotron text-center">
             <h2>All Teams</h2>
         </div>
     </div>
 
-    <!-- Pseudo code only, but this is what is needs to look like...
+    <!--
 
+    ================ALL TEAMS==================
     th:each="team : ${teams}"
 
     -->
 
-    <div class="flex-container">
+    <div class="flex-container" th:each = "team : ${teams}">
         <div class="limiter">
             <h3>[Thyme Leaf - Team name goes here]</h3><br/>
             <h6>[Thyme Leaf - Project name goes here]</h6><br/>
