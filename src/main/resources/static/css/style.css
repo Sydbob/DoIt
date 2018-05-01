@@ -85,10 +85,6 @@ img.user {
     background-color: #66ff33;
 }
 
-#information {
-    margin-left: 500px;
-}
-
 footer {
     text-align: right;
     color: white;
@@ -102,11 +98,6 @@ footer {
 tr:hover {
 
     background-color: #ffd9ed;
-}
-
-#HCB_comment_box {
-    width: 800px;
-    float: right;
 }
 
 th {

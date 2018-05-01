@@ -10,6 +10,7 @@
     <title>DoIt! | Task</title>
 
     <link th:href="@{css/style.css}" rel="stylesheet"/>
+    <link th:href="@{css/thistask.css}" rel="stylesheet"/>
     <link th:href="@{css/bootstrap.min.css}" rel="stylesheet"/>
 
     <!--[if lt IE 9]>
@@ -21,8 +22,14 @@
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
-        <a href="/" class="navbar-brand">DoIt!</a>
-        <div class="navbar-collapse collapse">
+        <div class="welcome">
+            <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+        </div>
+        <div class="logout">
+            <a href="/login">Log out</a>
+            <img class="user" src="/images/user.png"/>
+        </div>
+                <div class="navbar-collapse collapse">
             <ul>
                 <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
                 <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
