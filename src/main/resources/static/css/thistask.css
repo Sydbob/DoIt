@@ -1,9 +1,16 @@
 #information {
-    margin-left: 500px;
+    margin: auto;
+    background-color: #eee;
+    min-width: 510px;
+    max-width: 960px;
+    text-align: center;
+}
+
+#information label {
+    display: inline;
 }
 
 #HCB_comment_box {
     width: 800px;
     float: right;
 }
-
