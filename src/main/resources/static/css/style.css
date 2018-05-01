@@ -4,7 +4,7 @@ body {
 }
 
 .main-body{
-    margin-left: 20%;
+    margin-left: 10%;
 }
 
 .navigation{
@@ -13,6 +13,10 @@ body {
 }
 
 img.user{
+    min-height: 75px;
+    min-width: 75px;
+    max-height: 80px;
+    max-width: 80px;
     padding: 5px;
 }
 
@@ -21,10 +25,10 @@ img.navigation{
 }
 
 input[type=submit] {
-    width: 15px;
+    width: 100px;
     background-color: #4CAF50;
     color: white;
-    padding: 14px 20px;
+    padding: 10px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
@@ -39,17 +43,17 @@ input[type=submit]:hover {
 ul {
     font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
     list-style-type: none;
-    line-height: 2px;
+    line-height: 25px;
     margin: 0;
-    padding: 0px;
-    width: 15%;
+    padding: 15px;
+    width: 10%;
     background-color: #3b4a54;
     color: #88959e;
     position: fixed;
     height: 100%;
     overflow: auto;
     text-align: left;
-    min-width: 150px;
+    min-width: 100px;
 }
 
 li a {
@@ -72,6 +76,57 @@ div.body {
     margin-left:15%;
     padding:1px 16px;
     height:1000px;
+}
+
+#dashboard {
+    background: url(backgrounds/dashboard.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#project {
+    background: url(backgrounds/project.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#sprint {
+    background: url(backgrounds/sprint.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+
+#task {
+    background: url(backgrounds/task.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#team {
+    background: url(backgrounds/team.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.header-box {
+    text-align: right;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+.header-box h1 {
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    margin-top: 0;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    padding-top: 200px;
+    color: white;
 }
 
 div.header {
@@ -102,6 +157,7 @@ img.user {
 
 .red{
     background-color: red;
+    color: white;
 }
 
 .white {
