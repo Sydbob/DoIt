@@ -2,6 +2,7 @@ package com.doIt.DoIt.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,10 +29,12 @@ public class Sprint implements Serializable{
     //had to use conversion here for the date to make it work with the html code
     @Column(name = "deadline", nullable = false)
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime deadline;
 
     @Column(name = "start_date", nullable = false)
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime start_date;
 
    //===============constructor(s)=================
