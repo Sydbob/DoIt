@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**Controller for the dashboard.
+ Handles all requests involving dashboard page. */
 @Controller
 public class DashboardController {
 
@@ -20,6 +22,10 @@ public class DashboardController {
     private SprintService sprintService;
 
 
+    /**Mapping for home page and dashboard page
+     * "tasks" returns logged-in user's tasks
+     * "username" returns logged in user's username
+     * */
     @RequestMapping( value = {"/dashboard", "/home"}, method = RequestMethod.GET)
     public String dashboard(Authentication auth, HttpServletRequest request){
         request.setAttribute("tasks", taskService.getTasksByUsername(auth.getName()));
