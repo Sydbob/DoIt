@@ -32,6 +32,7 @@ public class Project implements Serializable{
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime end_date;
+
     private String status;
 
     //===============constructor(s)=================
