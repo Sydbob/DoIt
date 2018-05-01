@@ -3,6 +3,10 @@ body {
     padding: 0;
 }
 
+.main-body{
+    margin-left: 20%;
+}
+
 img.navigation{
     float: left;
 }

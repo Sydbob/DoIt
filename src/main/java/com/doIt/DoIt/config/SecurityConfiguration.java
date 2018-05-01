@@ -50,7 +50,8 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
                     .antMatchers("/login").permitAll()
                     .antMatchers("/registration").permitAll()
                     .antMatchers("/access-denied").permitAll()
-                    .antMatchers("/resources/**/**").permitAll().anyRequest().permitAll()
+                    .antMatchers("/resources/**").permitAll().anyRequest().permitAll()
+                    .antMatchers("/css/**").permitAll().anyRequest().permitAll()
                     .antMatchers("/admin/**").hasAnyAuthority("admin").anyRequest()
                     .authenticated().and().csrf().disable().formLogin()
                     .loginPage("/login").failureUrl("/login?error=true")
@@ -69,6 +70,6 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**/**", "/static/**", "**/css/**", "**/js/**", "**/images/**");
+                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
     }
 }
