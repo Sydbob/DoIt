@@ -47,8 +47,6 @@
     <form class="form-horizontal" method="POST" action="save-task">
         <input type="hidden" name="taskID" th:value="${task.taskID}"/>
         <input type="hidden" name="projectID" th:value="${task.projectID}"/>
-        <input type="hidden" name="hours_estimated" th:value="${task.hours_estimated}"/>
-        <input type="hidden" name="hours_contributed" th:value="${task.hours_contributed}"/>
         <div class="form-group">
             <label class="control-label col-md-3">Name</label>
             <div class="col-md-7">
@@ -61,16 +59,60 @@
                 <input type="text" class="form-control" name="description" th:value="${task.description}"/>
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Person assigned(Enter username)</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="username" th:value="${task.username}"/>
+            </div>
+        </div>
+
         <div class="form-group">
             <label class="control-label col-md-3">Status</label>
-            <div class="col-md-7">
-                <select th:value="${task.status}">
+            <div class="col-md-7" id="statusbar">
+                <select name ="status" th:value="${task.status}">
                     <option type="text" class="form-control" name="status">Choose from the following:</option>
-                    <option>pending</option>
-                    <option>on-going</option>
-                    <option>complete</option>
-                    <option>overdue</option>
+                    <option value="pending">Pending</option>
+                    <option value="on-going">On-going</option>
+                    <option value="completed">Completed</option>
+                    <option value="overdue">Overdue</option>
                 </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Hours Estimated</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="hours_estimated" th:value="${task.hours_estimated}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Hours Contributed</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="hours_contributed" th:value="${task.hours_contributed}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Sprint ID</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="sprintID" th:value="${task.sprintID}"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Start Date</label>
+            <div class="col-md-7">
+                <input type="datetime-local" class="form-control" name="start_date" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-3">End Date</label>
+            <div class="col-md-7">
+                <input type="datetime-local" class="form-control" name="end_date" />
             </div>
         </div>
         <div class="form-group">

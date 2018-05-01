@@ -11,7 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
+/**
+ * Class that has settings and configurations for Spring Security
+ * Based on the tutorial:
+ * https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
@@ -28,14 +32,15 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
     @Value("@{spring.queries.roles-query}")
     private String rolesQuery;
 
+    //sql query for authentication
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("select username as principal, password as credentials, true from member where username= ?")
                 .authoritiesByUsernameQuery("select m.username, r.name from member m inner join member_roles mr on(m.username=mr.username) inner join role r on(mr.roleID=r.roleID) where m.username=?");
-                //select m.username, r.role from member m inner join member_roles mr on(m.username=mr.username) inner join role r on(mr.roleID=r.roleID) where m.username=?
-                //.authoritiesByUsernameQuery("select username as principal, roleID as role from member_roles where username = ?");
     }
+
+    //configuration for pages permissions
     @Override
     protected void configure(HttpSecurity http) throws Exception{
 
@@ -45,10 +50,11 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
                     .antMatchers("/login").permitAll()
                     .antMatchers("/registration").permitAll()
                     .antMatchers("/access-denied").permitAll()
+                    .antMatchers("/resources/**/**").permitAll().anyRequest().permitAll()
                     .antMatchers("/admin/**").hasAnyAuthority("admin").anyRequest()
                     .authenticated().and().csrf().disable().formLogin()
                     .loginPage("/login").failureUrl("/login?error=true")
-                    .defaultSuccessUrl("/tasks")
+                    .defaultSuccessUrl("/tasks", true)
                     .usernameParameter("username")
                     .passwordParameter("password")
                     .and().logout()
@@ -57,10 +63,12 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
                     .accessDeniedPage("/access-denied");
     }
 
+
+    //security set to ignore resource folders so that css/html loads properly for every user
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+                .antMatchers("/resources/**/**", "/static/**", "**/css/**", "**/js/**", "**/images/**");
     }
 }

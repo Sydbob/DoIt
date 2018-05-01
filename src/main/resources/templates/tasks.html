@@ -68,6 +68,7 @@
                 <td th:text="${task.hours_estimated}">1</td>
                 <td th:text="${task.hours_contributed}">1</td>
                 <td th:text="${task.projectID}">1</td>
+                <td><a th:href="@{view-task(id=${task.taskID})}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
                 <td><a th:href="@{update-task(id=${task.taskID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                 <td><a th:href="@{delete-task(id=${task.taskID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>

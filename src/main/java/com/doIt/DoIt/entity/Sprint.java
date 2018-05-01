@@ -28,7 +28,9 @@ public class Sprint implements Serializable{
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
     private LocalDateTime start_date;
 
-    public Sprint(){}
+
+   //===============constructor(s)=================
+    public Sprint() {}
 
     public Sprint(int sprintID, int projectID, int teamID, LocalDateTime deadline, LocalDateTime start_date) {
         this.sprintID = sprintID;
@@ -37,6 +39,8 @@ public class Sprint implements Serializable{
         this.deadline = deadline;
         this.start_date = start_date;
     }
+
+    //================getters and setters===============
 
 
     public int getSprintID() {
