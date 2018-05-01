@@ -12,7 +12,7 @@
 
     <title>Do It! | Login</title>
 
-    <link href="@{css/login.css}" rel="stylesheet" />
+    <link href="@{css/loginStyle.css}" rel="stylesheet" />
 
     <link th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300}" rel="stylesheet" />
     <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css}" rel="stylesheet" />
@@ -32,7 +32,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
-    <link th:href="@{css/login.css}" rel="stylesheet" />
+    <link th:href="@{css/loginStyle.css}" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -40,6 +40,7 @@
 <body>
 <div class="login-page">
     <!-- REGISTRATION PAGE BELOW -->
+    <!--Add telephone field and teamID field to registration form also add back the post method for register button -->
     <div class="form">
         <img class="logo" src="/images/logo.png" title="&quot;Do It Logo&quot;"/>
 
@@ -76,6 +77,7 @@
 
 
         <!--LOGIN FORM BELOW-->
+
         <form th:action="@{/login}" method="POST" class="form-signin">
 
             <input type="text"  th:placeholder="Username" id="username" name="username"
