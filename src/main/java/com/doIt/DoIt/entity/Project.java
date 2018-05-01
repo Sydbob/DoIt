@@ -1,6 +1,7 @@
 package com.doIt.DoIt.entity;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +17,6 @@ import javax.validation.constraints.Size;
 public class Project implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     private int projectID;
 
@@ -25,10 +25,12 @@ public class Project implements Serializable{
 
     @Column(name = "start_date", nullable = false)
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime start_date;
 
     @Column(name = "end_date", nullable = false)
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime end_date;
     private String status;
 
