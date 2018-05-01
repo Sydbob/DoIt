@@ -72,6 +72,6 @@ public class ProjectController {
         request.setAttribute("project", projectService.findProject(id));
         request.setAttribute("username", authentication.getName());
         request.setAttribute("mode", "MODE_UPDATE");
-        return "update";
+        return "updateproject";
     }
 }

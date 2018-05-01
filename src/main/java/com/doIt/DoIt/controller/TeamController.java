@@ -1,6 +1,7 @@
 package com.doIt.DoIt.controller;
 
 import com.doIt.DoIt.service.MemberService;
+import com.doIt.DoIt.service.ProjectService;
 import com.doIt.DoIt.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,6 +19,8 @@ public class TeamController {
     private TeamService teamService;
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private ProjectService projectService;
 
 
   /** Mapping for the team page
@@ -25,7 +28,10 @@ public class TeamController {
   * "members" attribute returns a list of all teams/members */
     @GetMapping("/teams")
     public String usersTeams(Authentication auth, HttpServletRequest request){
-        request.setAttribute("myTeams", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
+        request.setAttribute("myteam", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
+        request.setAttribute("myteamID", memberService.findTeamIDByUsername(auth.getName()));
+        request.setAttribute("myproject", projectService.findProject(teamService.getTeamByID(memberService.findTeamIDByUsername(auth.getName())).getProjectID()));
+        request.setAttribute("teams", teamService.getAllTeams());
         request.setAttribute("members", memberService.getAllMembers());
         request.setAttribute("username", auth.getName());
         request.setAttribute("mode", "MODE_TEAMS");

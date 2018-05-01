@@ -21,5 +21,19 @@ public class Team {
 
     private int projectID;
 
+    public int getTeamID() {
+        return teamID;
+    }
 
+    public void setTeamID(int teamID) {
+        this.teamID = teamID;
+    }
+
+    public int getProjectID() {
+        return projectID;
+    }
+
+    public void setProjectID(int projectID) {
+        this.projectID = projectID;
+    }
 }

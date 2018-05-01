@@ -59,37 +59,37 @@
         <div class="form-group">
             <label class="control-label col-md-3">Project ID</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="projectID"/>
+                <input type="text" class="form-control" name="projectID" th:value="${project.projectID}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">Title</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="title" />
+                <input type="text" class="form-control" name="title" th:value="${project.title}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">Description</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="description" />
+                <input type="text" class="form-control" name="description" th:value="${project.description}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">Start Date</label>
             <div class="col-md-7">
-                <input type="datetime-local" class="form-control" name="start_date"/>
+                <input type="datetime-local" class="form-control" name="start_date" th:value="${project.start_date}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">End Date</label>
             <div class="col-md-7">
-                <input type="datetime-local" class="form-control" name="end_date"/>
+                <input type="datetime-local" class="form-control" name="end_date" th:value="${project.end_date}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">Status</label>
-            <div class="col-md-7">
-                <select name = "status">
+            <div class="col-md-7" id="statusbar">
+                <select name ="status" th:value="${project.status}">
                     <option type="text" class="form-control" name="status">Choose from the following:</option>
                     <option value="pending">Pending</option>
                     <option value="on-going">On-going</option>

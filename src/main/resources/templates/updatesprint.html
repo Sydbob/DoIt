@@ -35,10 +35,10 @@
         <a href="/" class="navbar-brand">DoIt!</a>
         <div class="navbar-collapse collapse">
             <ul>
-                <img class="logo" src="/images/logo2.png" title="&quot;Do It Logo&quot;"/>
+                <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
                 <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
-                <li><img class="navigation" src="/images/sidebar/projectactive.png"/><a class="active" href="/projects">Projects</a></li>
-                <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
+                <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
+                <li><img class="navigation" src="/images/sidebar/sprintactive.png"/><a class="active" href="/sprints">Sprints</a></li>
                 <li><img class="navigation" src="/images/sidebar/task.png"/><a href="/tasks">Tasks</a></li>
                 <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
             </ul>
@@ -47,57 +47,42 @@
 </div>
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
-        <h2>Create a new project</h2>
+        <h2>Create a new sprint</h2>
     </div>
 </div>
 
 <!--some html here to make the form appear for editing the task-->
 <div class="container text-center">
-    <h3>New Project</h3>
-    <form class="form-horizontal" method="POST" action="save-project">
+    <h3>New Sprint</h3>
+    <form class="form-horizontal" method="POST" action="save-sprint">
+
+        <input type="hidden" name="sprintID" th:value="${sprint.sprintID}"/>
 
         <div class="form-group">
             <label class="control-label col-md-3">Project ID</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="projectID"/>
+                <input type="text" class="form-control" name="projectID" th:value="${sprint.projectID}" />
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Title</label>
+            <label class="control-label col-md-3">Team ID</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="title" />
+                <input type="text" class="form-control" name="teamID" th:value="${sprint.teamID}"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Description</label>
+            <label class="control-label col-md-3">Deadline</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="description" />
+                <input type="datetime-local" class="form-control" name="deadline" th:value="${sprint.deadline}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">Start Date</label>
             <div class="col-md-7">
-                <input type="datetime-local" class="form-control" name="start_date"/>
+                <input type="datetime-local" class="form-control" name="start_date" th:value="${sprint.start_date}"/>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-3">End Date</label>
-            <div class="col-md-7">
-                <input type="datetime-local" class="form-control" name="end_date"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-3">Status</label>
-            <div class="col-md-7">
-                <select name = "status">
-                    <option type="text" class="form-control" name="status">Choose from the following:</option>
-                    <option value="pending">Pending</option>
-                    <option value="on-going">On-going</option>
-                    <option value="completed">Completed</option>
-                    <option value="overdue">Overdue</option>
-                </select>
-            </div>
-        </div>
+
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Save"/>
         </div>
