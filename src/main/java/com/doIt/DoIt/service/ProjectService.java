@@ -7,10 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Service class for project entity
- * This class has all the methods involving projects
- */
+
 @Service
 @Transactional
 public class ProjectService {

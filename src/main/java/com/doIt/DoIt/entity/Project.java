@@ -7,11 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-/**
- * Class that corresponds to Project entity in the database
- * Data members are named accordingly to the entity attributes in the database
- * Certain fields are annotated used @ annotations
- */
+
 @Entity(name = "Project")
 public class Project implements Serializable{
 
@@ -32,8 +28,8 @@ public class Project implements Serializable{
     private LocalDateTime end_date;
     private String status;
 
-    //===============constructor(s)=================
     public Project() {}
+
     public Project(int projectID, String title, String description, LocalDateTime start_date, LocalDateTime end_date, String status) {
         this.projectID = projectID;
         this.title = title;
@@ -42,8 +38,6 @@ public class Project implements Serializable{
         this.end_date = end_date;
         this.status = status;
     }
-
-    //===============getters and setters=================
 
     public int getProjectID() {
         return projectID;
