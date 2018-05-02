@@ -41,11 +41,6 @@
         </div>
     </div>
 </div>
-<div class="container invisible-at-first" id="homeDiv">
-    <div class="jumbotron text-center">
-        <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
-    </div>
-</div>
 <div class="container text-center" id="information">
     <h3>View Task</h3>
     <div method="GET" id="task-info">
@@ -61,7 +56,7 @@
         </div>
         <label class="control-label col-md-3">Status:</label>
         <div class="col-md-7">
-            <p type="text" class="form-control" name="status" th:text="${task.status}" th:class="${task.status}=='overdue' ? 'overdue': (${task.status}=='completed' ? 'completed' : 'none')"></p>
+            <p type="text" class="form-control" name="status" th:text="${task.status}" th:class="${task.status}=='overdue' ? 'overdue': (${task.status}=='completed' ? 'completed' : (${task.status}=='pending' ? 'pending' : 'none'))"></p>
         </div>
     </div>
 </div>
