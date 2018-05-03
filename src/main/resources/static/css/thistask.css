@@ -8,6 +8,10 @@
     border-radius: 10px;
 }
 
+#back-button {
+    margin-left: 800px;
+}
+
 #information h3 {
     font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
     text-align:center;
