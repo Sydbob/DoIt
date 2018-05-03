@@ -1,18 +1,22 @@
 package com.doIt.DoIt.entity;
 
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+/**
+ * Class that corresponds to Project entity in the database
+ * Data members are named accordingly to the entity attributes in the database
+ * Certain fields are annotated used @ annotations
+ */
 @Entity(name = "Project")
 public class Project implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
     private int projectID;
 
@@ -21,15 +25,18 @@ public class Project implements Serializable{
 
     @Column(name = "start_date", nullable = false)
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime start_date;
 
     @Column(name = "end_date", nullable = false)
     @Convert(converter = Jsr310JpaConverters.LocalDateTimeConverter.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime end_date;
+
     private String status;
 
+    //===============constructor(s)=================
     public Project() {}
-
     public Project(int projectID, String title, String description, LocalDateTime start_date, LocalDateTime end_date, String status) {
         this.projectID = projectID;
         this.title = title;
@@ -38,6 +45,8 @@ public class Project implements Serializable{
         this.end_date = end_date;
         this.status = status;
     }
+
+    //===============getters and setters=================
 
     public int getProjectID() {
         return projectID;

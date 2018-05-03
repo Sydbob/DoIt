@@ -1,6 +1,7 @@
 package com.doIt.DoIt.controller;
 
 import com.doIt.DoIt.service.MemberService;
+import com.doIt.DoIt.service.ProjectService;
 import com.doIt.DoIt.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**Controller for the team entity.
+Handles all requests involving team and provided page mapping for the entity as well. */
 @Controller
 public class TeamController {
 
@@ -16,21 +19,21 @@ public class TeamController {
     private TeamService teamService;
     @Autowired
     private MemberService memberService;
-
-    /*
-    @GetMapping("/teams")
-    public String usersTeams(HttpServletRequest request){
-        request.setAttribute("teams", teamService.getAllTeams());
-        request.setAttribute("mode", "MODE_TEAMS");
-        return "teams";
-    }*/
+    @Autowired
+    private ProjectService projectService;
 
 
-    //my teams
+  /** Mapping for the team page
+  * "myTeams" attribute returns a list of team that the logged in user is a part of at the moment
+  * "members" attribute returns a list of all teams/members */
     @GetMapping("/teams")
     public String usersTeams(Authentication auth, HttpServletRequest request){
-        request.setAttribute("teams", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
-        request.setAttribute("members", memberService);
+        request.setAttribute("myteam", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
+        request.setAttribute("myteamID", memberService.findTeamIDByUsername(auth.getName()));
+        request.setAttribute("myproject", projectService.findProject(teamService.getTeamByID(memberService.findTeamIDByUsername(auth.getName())).getProjectID()));
+        request.setAttribute("teams", teamService.getAllTeams());
+        request.setAttribute("members", memberService.getAllMembers());
+        request.setAttribute("username", auth.getName());
         request.setAttribute("mode", "MODE_TEAMS");
         return "teams";
     }

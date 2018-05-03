@@ -1,0 +1,101 @@
+/*------------------Task information ---------------------*/
+#information {
+    margin: auto;
+    background-color: #eee;
+    min-width: 510px;
+    max-width: 960px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+#information h3 {
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    text-align:center;
+    background-color: #1b4a54;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+}
+
+#information label {
+    float: left;
+    font-weight: bold;
+    margin-right: 20px;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+}
+
+.col-md-7 {
+    border-bottom: solid 1px #84858b;
+    padding-top: 10px;
+}
+
+.form-control {
+    text-align: center;
+    font-family: Arial, SansSerif;
+}
+
+.overdue {
+    font-size: 4em;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial;
+    animation-name: flash-red;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+.completed {
+    font-size: 4em;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial;
+    animation-name: flash-green;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+.pending {
+    font-size: 4em;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial;
+    animation-name: flash-orange;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+
+.none{}
+
+@keyframes flash-red {
+    from {color: red;}
+    to {color: black;}
+}
+
+@keyframes flash-green {
+    from {color: #66ff33;}
+    to {color: darkgreen;}
+}
+
+
+@keyframes flash-orange {
+    from {color: #ffc107;}
+    to {color: darkgoldenrod;}
+}
+/*-----------------------Comment Section --------------------------*/
+
+#HCB_comment_box {
+    margin: auto;
+    width: 800px;
+    min-width: 510px;
+    max-width: 960px;
+}

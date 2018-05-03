@@ -22,6 +22,16 @@
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
+
+        <div class="welcome">
+            <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+        </div>
+
+        <div class="logout">
+            <a href="/login">Log out</a>
+            <img class="user" src="/images/user.png"/>
+        </div>
+
         <a href="/" class="navbar-brand">DoIt!</a>
         <div class="navbar-collapse collapse">
             <ul>
@@ -44,7 +54,7 @@
 <!--some html here to make the form appear for editing the task-->
 <div class="container text-center">
     <h3>New Project</h3>
-    <form class="form-horizontal" method="POST" action="save-task">
+    <form class="form-horizontal" method="POST" action="save-project">
 
         <div class="form-group">
             <label class="control-label col-md-3">Project ID</label>
@@ -67,16 +77,27 @@
         <div class="form-group">
             <label class="control-label col-md-3">Start Date</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="start_date"/>
+                <input type="datetime-local" class="form-control" name="start_date"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">End Date</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="end_date"/>
+                <input type="datetime-local" class="form-control" name="end_date"/>
             </div>
         </div>
-
+        <div class="form-group">
+            <label class="control-label col-md-3">Status</label>
+            <div class="col-md-7">
+                <select name = "status">
+                    <option type="text" class="form-control" name="status">Choose from the following:</option>
+                    <option value="pending">Pending</option>
+                    <option value="on-going">On-going</option>
+                    <option value="completed">Completed</option>
+                    <option value="overdue">Overdue</option>
+                </select>
+            </div>
+        </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Save"/>
         </div>

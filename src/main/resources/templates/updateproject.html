@@ -35,11 +35,11 @@
         <a href="/" class="navbar-brand">DoIt!</a>
         <div class="navbar-collapse collapse">
             <ul>
-                <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
+                <img class="logo" src="/images/logo2.png" title="&quot;Do It Logo&quot;"/>
                 <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
-                <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
+                <li><img class="navigation" src="/images/sidebar/projectactive.png"/><a class="active" href="/projects">Projects</a></li>
                 <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-                <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a class ="active" href="/tasks">Tasks</a></li>
+                <li><img class="navigation" src="/images/sidebar/task.png"/><a href="/tasks">Tasks</a></li>
                 <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
             </ul>
         </div>
@@ -47,79 +47,55 @@
 </div>
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
-        <h2>Create a new task</h2>
+        <h2>Create a new project</h2>
     </div>
 </div>
 
 <!--some html here to make the form appear for editing the task-->
 <div class="container text-center">
-    <h3>New Task</h3>
-    <form class="form-horizontal" method="POST" action="save-task">
+    <h3>New Project</h3>
+    <form class="form-horizontal" method="POST" action="save-project">
 
         <div class="form-group">
-            <label class="control-label col-md-3">Name</label>
+            <label class="control-label col-md-3">Project ID</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="name"/>
+                <input type="text" class="form-control" name="projectID" th:value="${project.projectID}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Title</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="title" th:value="${project.title}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">Description</label>
             <div class="col-md-7">
-                <input type="text" class="form-control" name="description" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-3">Status</label>
-            <div class="col-md-7">
-            <select name = "status">
-                <option type="text" class="form-control" name="status">Choose from the following:</option>
-                <option value="pending">Pending</option>
-                <option value="on-going">On-going</option>
-                <option value="completed">Completed</option>
-                <option value="overdue">Overdue</option>
-            </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-3">Project ID</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="projectID"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-3">Sprint ID</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="sprintID"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-3">Person assigned(Enter username)</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="username"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-3">Hours Estimated</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="hours_estimated"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-md-3">Hours Contributed</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="hours_contributed"/>
+                <input type="text" class="form-control" name="description" th:value="${project.description}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">Start Date</label>
             <div class="col-md-7">
-                <input type="datetime-local" class="form-control" name="start_date"/>
+                <input type="datetime-local" class="form-control" name="start_date" th:value="${project.start_date}"/>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-3">End Date</label>
             <div class="col-md-7">
-                <input type="datetime-local" class="form-control" name="end_date"/>
+                <input type="datetime-local" class="form-control" name="end_date" th:value="${project.end_date}"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3">Status</label>
+            <div class="col-md-7" id="statusbar">
+                <select name ="status" th:value="${project.status}">
+                    <option type="text" class="form-control" name="status">Choose from the following:</option>
+                    <option value="pending">Pending</option>
+                    <option value="on-going">On-going</option>
+                    <option value="completed">Completed</option>
+                    <option value="overdue">Overdue</option>
+                </select>
             </div>
         </div>
         <div class="form-group">

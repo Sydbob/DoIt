@@ -6,6 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Class that corresponds to Team entity in the database
+ * Data members are named accordingly to the entity attributes in the database
+ * Certain fields are annotated used @ annotations
+ */
 @Entity
 public class Team {
 
@@ -16,5 +21,19 @@ public class Team {
 
     private int projectID;
 
+    public int getTeamID() {
+        return teamID;
+    }
 
+    public void setTeamID(int teamID) {
+        this.teamID = teamID;
+    }
+
+    public int getProjectID() {
+        return projectID;
+    }
+
+    public void setProjectID(int projectID) {
+        this.projectID = projectID;
+    }
 }

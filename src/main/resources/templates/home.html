@@ -22,6 +22,16 @@
 <body>
 <div role="navigation">
     <div class="navbar navbar-inverse">
+
+        <div class="welcome">
+            <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+        </div>
+
+        <div class="logout">
+            <a href="/login">Log out</a>
+            <img class="user" src="/images/user.png"/>
+        </div>
+
         <div class="navbar-collapse collapse">
             <ul>
                 <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>

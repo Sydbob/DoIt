@@ -1,18 +1,24 @@
 package com.doIt.DoIt.service;
 
 import com.doIt.DoIt.dao.ProjectRepository;
+import com.doIt.DoIt.dao.TeamRepository;
 import com.doIt.DoIt.entity.Project;
+import com.doIt.DoIt.entity.Team;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Service class for project entity
+ * This class has all the methods involving projects
+ */
 @Service
 @Transactional
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
+    private  TeamRepository teamRepository;
 
     public ProjectService(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
@@ -24,6 +30,7 @@ public class ProjectService {
             sprints.add(p);
         return sprints;
     }
+
 
     public void save(Project project){
         projectRepository.save(project);

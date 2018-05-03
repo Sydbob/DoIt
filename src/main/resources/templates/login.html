@@ -12,7 +12,7 @@
 
     <title>Do It! | Login</title>
 
-    <link href="@{css/login.css}" rel="stylesheet" />
+    <link href="@{css/loginStyle.css}" rel="stylesheet" />
 
     <link th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300}" rel="stylesheet" />
     <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css}" rel="stylesheet" />
@@ -32,7 +32,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
-    <link th:href="@{css/login.css}" rel="stylesheet" />
+    <link th:href="@{css/loginStyle.css}" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -40,6 +40,7 @@
 <body>
 <div class="login-page">
     <!-- REGISTRATION PAGE BELOW -->
+
     <div class="form">
         <img class="logo" src="/images/logo.png" title="&quot;Do It Logo&quot;"/>
         <span th:utext="${successMessage}"></span>
@@ -56,6 +57,11 @@
             <input type="text" th:field="*{name}"
                    placeholder="Full Name" class="form-control" />
 
+            <input type="text" th:field="*{teamID}" placeholder="Team ID"
+                   class="form-control" /> <label
+                th:if="${#fields.hasErrors('teamID')}" th:errors="*{teamID}"
+                class="validation-message"></label>
+
             <input type="text" th:field="*{email}" placeholder="Email"
                    class="form-control" /> <label
                 th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
@@ -65,6 +71,7 @@
                    placeholder="Password" class="form-control" /> <label
                 th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
                 class="validation-message"></label>
+
 
             <label th:if="${#fields.hasErrors('teamID')}" th:errors="*{teamID}"
                    class="validation-message"></label>
@@ -77,6 +84,7 @@
                    class="form-control" />
 
             <button class="btn btn-lg btn-primary " name="Submit" value="Login" type="Submit" th:text="Registration">Register</button>
+
             <p class="message">Already Registered? <a href="#" >Login</a></p>
 
 
@@ -86,11 +94,12 @@
 
 
         <!--LOGIN FORM BELOW-->
+
         <form th:action="@{/login}" method="POST" class="form-signin">
 
             <input type="text"  th:placeholder="Username" id="username" name="username"
                    class="form-control" />
-            <input type="text"  th:placeholder="Password"
+            <input type="password"  th:placeholder="Password"
                    id="password" name="password" class="form-control" />
 
             <div align="center" th:if="${param.error}">
