@@ -63,6 +63,56 @@ public class TaskService {
         return tasks;
     }
 
+    public int getNumTasksDone(String username){
+        int amount = 0;
+        for (Task t : taskRepository.findAll()){
+            if (t.getStatus().equals("completed") && t.getUsername().equals(username)){
+                amount++;
+            }
+        }
+        return amount;
+    }
+
+    public int getNumTasksOverdue(String username){
+        int amount = 0;
+        for (Task t : taskRepository.findAll()){
+            if (t.getStatus().equals("overdue") && t.getUsername().equals(username)){
+                amount++;
+            }
+        }
+        return amount;
+    }
+
+    public int getNumTasksPending(String username){
+        int amount = 0;
+        for (Task t : taskRepository.findAll()){
+            if (t.getStatus().equals("pending") && t.getUsername().equals(username)){
+                amount++;
+            }
+        }
+        return amount;
+    }
+
+    public int getNumTasksOnGoing(String username){
+        int amount = 0;
+        for (Task t : taskRepository.findAll()){
+            if ( t.getUsername().equals(username) && t.getStatus().equals("on-going")){
+                amount++;
+            }
+        }
+        return amount;
+    }
+
+    public int totalHoursContributed(String username){
+        int amount = 0;
+        for (Task t : taskRepository.findAll()){
+            if ( t.getUsername().equals(username)){
+                amount+= t.getHours_contributed();
+            }
+        }
+        return amount;
+    }
+
     public void save(Task task){
         taskRepository.save(task);
     }
