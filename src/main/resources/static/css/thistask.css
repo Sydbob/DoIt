@@ -11,7 +11,7 @@
 #information h3 {
     font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
     text-align:center;
-    background-color: #1b4a54;
+    background-color: #FD038A;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     color: white;
@@ -73,8 +73,18 @@
     animation-play-state: running;
 }
 
-
-.none{}
+.on-going {
+    font-size: 4em;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial;
+    animation-name: flash-pink;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
 
 @keyframes flash-red {
     from {color: red;}
@@ -90,6 +100,11 @@
 @keyframes flash-orange {
     from {color: #ffc107;}
     to {color: darkgoldenrod;}
+}
+
+@keyframes flash-pink {
+    from {color: #FD038A;}
+    to {color: darkmagenta;}
 }
 /*-----------------------Comment Section --------------------------*/
 
