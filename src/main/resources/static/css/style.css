@@ -53,7 +53,7 @@ ul {
     margin: 0;
     padding: 15px;
     width: 10%;
-    min-width: 300px;
+    min-width: 250px;
     background-color: #3b4a54;
     color: #88959e;
     position: fixed;
@@ -131,6 +131,7 @@ div.body {
     width: 100%;
     height: 400px;
     margin-bottom: 30px;
+    font-size: 50px;
 }
 
 .header-box h1 {
@@ -142,8 +143,8 @@ div.body {
     padding-top: 200px;
     color: white;
     text-shadow: 2px 2px 4px #000000;
-    font-size: 30px;
 }
+
 
 div.header {
     font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
@@ -167,16 +168,40 @@ img.user {
     align-self: bottom;
 }
 
-.container text-center {
+.title-box {
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    height: 100px;
+    width: 300px;
     padding: 15px;
-    background-color: f1f1f1
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+.container.text-center {
+    width: 70%;
+    padding: 15px;
+    background-color: #f1f1f1;
     border-radius: 20px;;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.container.invisible-at-first {
+    padding: 30px;
+}
+
+.user {
+    padding-top: 20px;
+}
+
+.admin {
+    padding-top: 20px;
+}
+
 .yellow{
     background-color: #ffe066;
-}
+}                                                                                                                                       
 
 .red{
     background-color: red;
@@ -229,7 +254,9 @@ th {
 }
 
 
+/*
     Style for welcome message
+*/
 .welcome {
     padding: 5px;
     padding-left: 20px;
