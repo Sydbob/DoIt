@@ -1,12 +1,17 @@
 package com.doIt.DoIt.controller;
 
+import com.doIt.DoIt.entity.Team;
 import com.doIt.DoIt.service.MemberService;
 import com.doIt.DoIt.service.ProjectService;
 import com.doIt.DoIt.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,6 +40,27 @@ public class TeamController {
         request.setAttribute("members", memberService.getAllMembers());
         request.setAttribute("username", auth.getName());
         request.setAttribute("mode", "MODE_TEAMS");
+        return "teams";
+    }
+
+    @GetMapping("/update-team")
+    public String editTeam(@RequestParam int id,  Authentication auth, HttpServletRequest request){
+        request.setAttribute("task", teamService.getTeamByID(id));
+        request.setAttribute("username", auth.getName());
+        request.setAttribute("mode", "MODE_UPDATE");
+        return "updateteam";
+    }
+
+    @PostMapping("/save-team")
+    public String saveTask(@ModelAttribute Team team, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
+        teamService.save(team);
+        request.setAttribute("myteam", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
+        request.setAttribute("myteamID", memberService.findTeamIDByUsername(auth.getName()));
+        request.setAttribute("myproject", projectService.findProject(teamService.getTeamByID(memberService.findTeamIDByUsername(auth.getName())).getProjectID()));
+        request.setAttribute("teams",teamService.getAllTeams());
+        request.setAttribute("members", memberService.getAllMembers());
+        request.setAttribute("username", auth.getName());
+        request.setAttribute("mode", "MODE_TASKS");
         return "teams";
     }
 }
