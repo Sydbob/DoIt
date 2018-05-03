@@ -29,6 +29,11 @@ public class DashboardController {
     @RequestMapping( value = {"/dashboard", "/home"}, method = RequestMethod.GET)
     public String dashboard(Authentication auth, HttpServletRequest request){
         request.setAttribute("tasks", taskService.getTasksByUsername(auth.getName()));
+        request.setAttribute("numTasksDone", taskService.getNumTasksDone(auth.getName()));
+        request.setAttribute("numTasksOverdue", taskService.getNumTasksOverdue(auth.getName()));
+        request.setAttribute("numTasksPending", taskService.getNumTasksPending(auth.getName()));
+        request.setAttribute("numTasksOnGoing", taskService.getNumTasksOnGoing(auth.getName()));
+        request.setAttribute("totalHoursContributed", taskService.totalHoursContributed(auth.getName()));
         request.setAttribute("username", auth.getName());
        return "dashboard";
     }

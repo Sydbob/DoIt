@@ -7,7 +7,9 @@
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
 
+
     <title>DoIt! | Dashboard</title>
+
 
     <link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{css/style.css}" rel="stylesheet" />
@@ -16,6 +18,7 @@
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+
 
 </head>
 
@@ -53,22 +56,35 @@
 </div>
 <div class="container text-center" id="tasksDiv">
     <hr />
-    <div class="table-responsive">
-        <table class='table table-responsive table-bordered text-left'>
-            <thead>
-            <tr>
-                <th>Hours Contributed</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="task : ${tasks}">
-            <tr>
-                <td th:text="${task.hours_contributed}">1</td>
-            </tr>
-            </tr>
-            </tbody>
-        </table>
+    <!--
+         ====== status box things feel free to make these better =====
+     -->
+    <div class='status-box'>
+        <h3>Tasks Completed</h3>
+        <p th:text="${numTasksDone}"></p>
+    </div>
 
+    <div class='status-box' >
+        <h3>Tasks Overdue</h3>
+        <p th:text="${numTasksOverdue}"></p>
+    </div>
+
+    <div class='status-box'>
+        <h3>Tasks Pending</h3>
+        <p th:text="${numTasksPending}"></p>
+    </div>
+
+    <div class='status-box'>
+        <h3>Total Hours Contributed</h3>
+        <p th:text="${totalHoursContributed}"></p>
+    </div>
+
+
+        <!-- ====== status box things end =====  -->
+
+
+
+    <div class="table-responsive">
         <table class="table table-responsive table-bordered text-left">
             <thead>
             <tr>
