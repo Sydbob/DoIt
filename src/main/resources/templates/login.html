@@ -43,7 +43,7 @@
 
     <div class="form">
         <img class="logo" src="/images/logo.png" title="&quot;Do It Logo&quot;"/>
-        <span style="font-size: 20; color: #FF1C19;" th:utext="${successMessage}"></span>
+        <p style="font-size: 20; color: green;" th:utext="${successMessage}"></p>
         <form autocomplete="off" action="#" th:action="@{/registration}"
               th:object="${member}" method="post" class="form-horizontal" role="form">
 
