@@ -22,7 +22,7 @@ img.user{
     min-width: 85px;
     max-height: 80px;
     max-width: 80px;
-    padding: 5px;
+    padding: 6px;
 }
 
 img.navigation-sprite{
@@ -44,7 +44,6 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #45a049;
 }
-
 
 ul {
     font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
