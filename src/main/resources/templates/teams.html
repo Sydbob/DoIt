@@ -27,6 +27,7 @@
 <body>
 
 <div class="navigation">
+    <div class = "top-navigation">
     <div class="welcome">
         <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
         <img class="user" src="/images/user.png"/>
@@ -36,14 +37,15 @@
             <input type="submit" value="Log Out"/>
         </form>
     </div>
+    </div>
 
     <ul>
         <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
-        <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
-        <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
-        <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-        <li><img class="navigation" src="/images/sidebar/task.png"/><a href="/tasks">Tasks</a></li>
-        <li><img class="navigation" src="/images/sidebar/teamactive.png"/><a class ="active" href="/teams">Teams</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/task.png"/><a href="/tasks">Tasks</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/teamactive.png"/><a class ="active" href="/teams">Teams</a></li>
     </ul>
 </div>
 
