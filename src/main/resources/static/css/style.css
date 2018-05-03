@@ -14,6 +14,7 @@ body {
     font-weight: bold;
     width: 100%;
     height: 85px;
+    z-index: 8;
 }
 
 img.user{
@@ -59,7 +60,7 @@ ul {
     height: 100%;
     overflow: auto;
     text-align: left;
-    min-width: 100px;
+    z-index: 9;
 }
 
 li a {
@@ -71,6 +72,7 @@ li a {
 
 li a.active {
     color: white;
+    text-decoration: none;
 }
 
 li a:hover:not(.active) {
@@ -90,7 +92,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 100%;
+    min-width: 1365px;
 }
 
 #project {
@@ -98,6 +100,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    min-width: 1218px;
 }
 
 #sprint {
@@ -105,6 +108,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
+    min-width: 1365px;
 }
 
 #task {
@@ -112,6 +116,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    min-width: 1358px;
 }
 
 #team {
@@ -119,10 +124,10 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    min-width: 1066px;
 }
 
 .header-box {
-    text-align: right;
     width: 100%;
     height: 400px;
     margin-bottom: 30px;
@@ -130,11 +135,14 @@ div.body {
 
 .header-box h1 {
     font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    text-align: right;
     margin-top: 0;
     margin-right: 100px;
     margin-bottom: 50px;
     padding-top: 200px;
     color: white;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 30px;
 }
 
 div.header {
@@ -157,6 +165,13 @@ img.user {
     padding-right: 10px;
     display: inline-block;
     align-self: bottom;
+}
+
+.container text-center {
+    padding: 15px;
+    background-color: f1f1f1
+    border-radius: 20px;;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .yellow{
