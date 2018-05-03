@@ -8,9 +8,20 @@
     <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
 
     <title>DoIt! | Tasks</title>
+    <link th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" />
+
 
     <link th:href="@{css/style.css}" rel="stylesheet" />
     <link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
@@ -20,33 +31,69 @@
 </head>
 
 <body>
-<div class="navigation">
-    <div class = "top-navigation">
-    <div class="welcome">
-        <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
-        <img class="user" src="/images/user.png"/>
+<div class="header">
+    <div class="logo">
+        <i class="fa fa-cogs"></i>
+        <span>DO IT</span>
     </div>
-    <div class="logout">
-        <form action="/login">
-            <input type="submit" value="Log Out"/>
+    <a href="#" class="nav-trigger"><span></span></a>
+</div>
+<div class="side-nav">
+    <div class="logo">
+        <i class="fa fa-cogs"></i>
+        <span>DO IT</span>
+    </div>
+    <nav>
+        <img class="logo-image" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
+        <ul>
+            <li>
+                <a href="/dashboard">
+                    <span><i class="fa fa-dashboard"> </i></span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/projects">
+
+                    <span><i class="fa fa-folder"></i></span>
+                    <span>Project</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="/sprints">
+                    <span><i class="fa fa-play"></i></span>
+                    <span>Sprints</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tasks">
+                    <span><i class="fa fa-tasks"></i></span>
+                    <!-- <span>Task</span> -->
+                    <span id="link">Tasks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/teams">
+                    <span><i class="fa fa-group"></i></span>
+                    <span id="link">Teams</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="main-content">
+
+    <div id="header-title" class="header-task3">
+        <h2>Task</h2>
+    </div>
+    <div id="welcome">
+        <i class="fa fa-user"></i>
+        <p id="welcome">Welcome  </p><p th:text="${username}"></p>
+
+        <form id="login" action="/login">
+            <input id="logout" class="btn btn-md btn-warning btn-block" type="submit" value="Log Out"/>
         </form>
-    </div>
-    </div>
-
-            <ul>
-                <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
-                <li><img class="navigation-sprite" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
-                <li><img class="navigation-sprite" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
-                <li><img class="navigation-sprite" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-                <li><img class="navigation-sprite" src="/images/sidebar/taskactive.png"/><a class ="active" href="/tasks">Tasks</a></li>
-                <li><img class="navigation-sprite" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
-            </ul>
-        </div>
-
-<div class="main-body">
-
-    <div id="task" class="header-box">
-        <h1>Tasks</h1>
     </div>
 
     <!--
@@ -58,53 +105,55 @@
 
     <div class = "user">
 
-<div class="container invisible-at-first" id="homeDiv">
-    <div class="title-box">
-        <h2>My Tasks</h2>
-    </div>
-</div>
-
-    <div class = "container-box">
-
-        <div class="container text-center" id="tasksDiv">
-            <hr />
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Hours Estimated</th>
-                        <th>Hours Contributed</th>
-                        <th>Project ID</th>
-                        <th> </th>
-                        <th> </th>
-                        <th> </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="task : ${tasks}">
-                    <tr>
-                        <td th:text="${task.taskID}">1</td>
-                        <td th:text="${task.name}">1</td>
-                        <td th:text="${task.description}">1</td>
-                        <td th:text="${task.status}" th:class="${task.status}=='pending' ? 'yellow' : (${task.status}=='overdue' ? 'red' : (${task.status}=='completed' ? 'green' : 'white'))">1</td>
-                        <td th:text="${task.hours_estimated}">1</td>
-                        <td th:text="${task.hours_contributed}">1</td>
-                        <td th:text="${task.projectID}">1</td>
-                        <td><a th:href="@{view-task(id=${task.taskID})}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-                        <td><a th:href="@{update-task(id=${task.taskID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                        <td><a th:href="@{delete-task(id=${task.taskID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
-                    </tr>
-                    </tr>
-                    </tbody>
-                </table>
+        <div class="container invisible-at-first" id="homeDiv">
+            <div class="title-box">
+                <h2>My Tasks</h2>
             </div>
-            <div id="piechart"></div>
         </div>
-    </div>
+
+            <div class = "container-box">
+
+                <!--<div class="container text-center" id="tasksDiv">-->
+                    <hr />
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Hours Estimated</th>
+                                <th>Hours Contributed</th>
+                                <th>Project ID</th>
+                                <th> </th>
+                                <th> </th>
+                                <th> </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="task : ${tasks}">
+                            <tr>
+                                <td th:text="${task.taskID}">1</td>
+                                <td th:text="${task.name}">1</td>
+                                <td th:text="${task.description}">1</td>
+                                <td th:text="${task.status}" th:class="${task.status}=='pending' ? 'yellow' : (${task.status}=='overdue' ? 'red' : (${task.status}=='completed' ? 'green' : 'white'))">1</td>
+                                <td th:text="${task.hours_estimated}">1</td>
+                                <td th:text="${task.hours_contributed}">1</td>
+                                <td th:text="${task.projectID}">1</td>
+                                <td><a th:href="@{view-task(id=${task.taskID})}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                                <td><a th:href="@{update-task(id=${task.taskID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                <td><a th:href="@{delete-task(id=${task.taskID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            </tr>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                <a href="/new-task.html"><button id="create" class="btn btn-md btn-primary">Create</button> </a>
+                    <div id="piechart"></div>
+                <!--</div>-->
+            </div>
     </div>
 
     <!--
@@ -124,7 +173,7 @@
 
     <div class = "container-box">
 
-        <div class="container text-center" id="tasksDiv">
+        <!--<div class="container text-center" id="tasksDiv">-->
             <hr />
             <div class="table-responsive">
                 <table class="table table-striped">
@@ -161,7 +210,7 @@
                 </table>
             </div>
             <div id="piechart"></div>
-        </div>
+        <!--</div>-->
     </div>
 
     </div>

@@ -1,77 +1,103 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Cache-Control" content="no-cache" />
-    <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
-
-    <title>DoIt! | Teams</title>
-
-
-
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Do It! | Team</title>
+    <link th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" />
 
     <link th:href="@{css/style.css}" rel="stylesheet" />
-    <link th:href="@{css/teams.css}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" />
 
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="test3.js"></script>
 
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <!--<script th:src="@{js/jquery-1.11.1.min.js}"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <script src="bootstrap.min.js"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet" />
 
 </head>
-
-
 <body>
+<div class="header">
+    <div class="logo">
+        <i class="fa fa-cogs"></i>
+        <span>DO IT</span>
+    </div>
+    <a href="#" class="nav-trigger"><span></span></a>
+</div>
+<div class="side-nav">
+    <div class="logo">
+        <i class="fa fa-cogs"></i>
+        <span>DO IT</span>
+    </div>
+    <nav>
+        <img class="logo-image" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
+        <ul>
+            <li>
+                <a href="/dashboard">
+                    <span><i class="fa fa-dashboard"> </i></span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/projects">
 
-<div class="navigation">
-    <div class = "top-navigation">
-    <div class="welcome">
-        <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
-        <img class="user" src="/images/user.png"/>
-    </div>
-    <div class="logout">
-        <form action="/login">
-            <input type="submit" value="Log Out"/>
-        </form>
-    </div>
-    </div>
-
-    <ul>
-        <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
-        <li><img class="navigation-sprite" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/task.png"/><a href="/tasks">Tasks</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/teamactive.png"/><a class ="active" href="/teams">Teams</a></li>
-    </ul>
+                    <span><i class="fa fa-folder"></i></span>
+                    <span>Project</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="/sprints">
+                    <span><i class="fa fa-play"></i></span>
+                    <span>Sprints</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tasks">
+                    <span><i class="fa fa-tasks"></i></span>
+                    <!-- <span>Task</span> -->
+                    <span id="link">Tasks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/teams">
+                    <span><i class="fa fa-group"></i></span>
+                    <span id="link">Teams</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
-<div class="main-body">
+
+<div class="main-content">
 
 
-    <div id="team" class="header-box">
-        <h1>Teams</h1>
+    <!-- <div class="container text-center" id="tasksDiv">
+            <h2 id="header-title">My Teams</h2>
+        </div> -->
+    <div id="header-title" class="header-title2">
+        <h2>My Teams</h2>
     </div>
+    <div id="welcome">
+        <i class="fa fa-user"></i>
+        <p id="welcome">Welcome  </p><p th:text="${username}"></p>
 
-
-
-
-    <!--
-
-    ================MY TEAM==================
-
-     Viewable to user
-     -->
-
-    <div class="user">
-        <div class="container invisible-at-first" id="homeDiv">
-            <div class="title-box">
-                <h2>My Teams</h2>
-            </div>
-        </div>
+        <form id="login" action="/login">
+            <input id="logout" class="btn btn-md btn-warning btn-block" type="submit" value="Log Out"/>
+        </form>
+    </div>
     <div class="flex-container"  >
         <div class="limiter">
             <h3>Team Number: </h3><h3 th:text ="${myteamID}"></h3><br/>
@@ -108,23 +134,17 @@
             </div>
         </div>
     </div>
+    <div id="header-title" class="jumbotron text-center">
+        <h2>All Teams</h2>
     </div>
-
 
     <!--
 
-    ================ALL TEAMS==================
+================ALL TEAMS==================
+th:each="team : ${teams}"
 
-    Viewable to admin
-    -->
+-->
 
-    <div class="container invisible-at-first" id="homeDiv">
-        <div class="title-box">
-            <h2>My Teams</h2>
-        </div>
-    </div>
-
-    <div class="admin">
     <div class="flex-container" th:each = "team : ${teams}">
         <div class="limiter">
             <h3>Team Number:</h3><h3 th:text = "${team.teamID}"></h3><br/>
@@ -159,18 +179,11 @@
             </div>
         </div>
     </div>
-    </div>
 
 </div>
-
-<!--<script th:src="@{js/jquery-1.11.1.min.js}"></script>-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-
-<script src="bootstrap.min.js"></script>
-<script th:src="@{js/bootstrap.min.js}"></script>
-</body>
 <footer>
     <p>&copy; Copyright 2018. DoIt Ltd. All rights reserved. DoIt is a registered trademark. No content may be downloaded for commercial or non-commercial usage.</p>
 </footer>
+
+</body>
 </html>

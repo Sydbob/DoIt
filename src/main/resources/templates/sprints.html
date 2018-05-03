@@ -9,8 +9,20 @@
 
     <title>DoIt! | Sprints</title>
 
+    <link th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" />
+
+
     <link th:href="@{css/style.css}" rel="stylesheet" />
     <link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
@@ -20,33 +32,69 @@
 </head>
 
 <body>
-<div class="navigation">
-    <div class = "top-navigation">
-    <div class="welcome">
-        <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
-        <img class="user" src="/images/user.png"/>
+<div class="header">
+    <div class="logo">
+        <i class="fa fa-cogs"></i>
+        <span>DO IT</span>
     </div>
-    <div class="logout">
-        <form action="/login">
-            <input type="submit" value="Log Out"/>
-        </form>
+    <a href="#" class="nav-trigger"><span></span></a>
+</div>
+<div class="side-nav">
+    <div class="logo">
+        <i class="fa fa-cogs"></i>
+        <span>DO IT</span>
     </div>
-    </div>
+    <nav>
+        <img class="logo-image" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
+        <ul>
+            <li>
+                <a href="/dashboard">
+                    <span><i class="fa fa-dashboard"> </i></span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/projects">
 
-    <ul>
-        <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
-        <li><img class="navigation-sprite" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/sprintactive.png"/><a class ="active" href="/sprints">Sprints</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/task.png"/><a  href="/tasks">Tasks</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
-    </ul>
+                    <span><i class="fa fa-folder"></i></span>
+                    <span>Project</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="/sprints">
+                    <span><i class="fa fa-play"></i></span>
+                    <span>Sprints</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tasks">
+                    <span><i class="fa fa-tasks"></i></span>
+                    <!-- <span>Task</span> -->
+                    <span id="link">Tasks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/teams">
+                    <span><i class="fa fa-group"></i></span>
+                    <span id="link">Teams</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
-<div class="main-body">
+<div class="main-content">
 
-    <div id="sprint" class="header-box">
-        <h1>Sprints</h1>
+    <div id="header-title" class="header-sprint3">
+        <h2>Sprint</h2>
+    </div>
+    <div id="welcome">
+        <i class="fa fa-user"></i>
+        <p id="welcome">Welcome  </p><p th:text="${username}"></p>
+
+        <form id="login" action="/login">
+            <input id="logout" class="btn btn-md btn-warning btn-block" type="submit" value="Log Out"/>
+        </form>
     </div>
 
     <!--
@@ -63,10 +111,10 @@
         </div>
 
         <div class = "container-box">
-            <div class="container text-center" id="sprintsDiv">
+            <!--<div class="container text-center" id="sprintsDiv">-->
                 <hr />
                 <div class="table-responsive">
-                    <table class='table table-responsive table-bordered text-left'>
+                    <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>Sprint ID</th>
@@ -91,7 +139,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            <!--</div>-->
         </div>
     </div>
 
@@ -111,10 +159,10 @@
 
 
     <div class = "container-box">
-        <div class="container text-center" id="sprintsDiv">
+        <!--<div class="container text-center" id="sprintsDiv">-->
             <hr />
             <div class="table-responsive">
-                <table class='table table-responsive table-bordered text-left'>
+                <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>Sprint ID</th>
@@ -139,7 +187,8 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        <a href="/new-project.html"><button id="create" class="btn btn-md btn-primary">Create</button> </a>
+        <!--</div>-->
     </div>
     </div>
 </div>
