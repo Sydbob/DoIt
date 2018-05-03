@@ -3,10 +3,12 @@ package com.doIt.DoIt.service;
 import com.doIt.DoIt.dao.MemberRepository;
 import com.doIt.DoIt.dao.RoleRepository;
 import com.doIt.DoIt.entity.Member;
+import com.doIt.DoIt.entity.MemberDTO;
 import com.doIt.DoIt.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -49,6 +51,18 @@ public class MemberService {
             teammembers.add(m);
         }
         return teammembers;
+    }
+
+    public Member createUser(MemberDTO memberDTO, BindingResult bindingResult){
+        Member member = new Member();
+        member.setEmail(memberDTO.getEmail());
+        member.setName(memberDTO.getName());
+        member.setRoles(memberDTO.getRoles());
+        member.setTeamID(memberDTO.getTeamID());
+        member.setTelephone(memberDTO.getTelephone());
+        member.setUsername(memberDTO.getUsername());
+        member.setPassword(memberDTO.getPassword());
+        return memberRepository.save(member);
     }
 
     public Member findUserByName(String name){
