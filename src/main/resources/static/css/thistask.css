@@ -86,6 +86,10 @@
     animation-play-state: running;
 }
 
+#back-button {
+    margin-left: 800px;
+}
+
 @keyframes flash-red {
     from {color: red;}
     to {color: black;}

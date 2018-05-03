@@ -54,12 +54,29 @@
         <div class="col-md-7">
             <p type="text" class="form-control" name="description" id="description" th:text="${task.description}"></p>
         </div>
+        <label class="control-label col-md-3">Date Started:</label>
+        <div class="col-md-7">
+            <p type="text" class="form-control" name="description" id="start-time" th:text="${task.start_date}"></p>
+        </div>
+        <label class="control-label col-md-3">Due Date:</label>
+        <div class="col-md-7">
+            <p type="text" class="form-control" name="description" id="end-time" th:text="${task.end_date}"></p>
+        </div>
+        <label class="control-label col-md-3">Your hours contributed:</label>
+        <div class="col-md-7">
+            <p type="text" class="form-control" name="description" id="hours-contributed" th:text="${task.hours_contributed}"></p>
+        </div>
+        <label class="control-label col-md-3">Hours estimated:</label>
+        <div class="col-md-7">
+            <p type="text" class="form-control" name="description" id="hours-estimated" th:text="${task.hours_estimated}"></p>
+        </div>
         <label class="control-label col-md-3">Status:</label>
         <div class="col-md-7">
             <p type="text" class="form-control" name="status" th:text="${task.status}" th:class="${task.status}=='overdue' ? 'overdue': (${task.status}=='completed' ? 'completed' : (${task.status}=='pending' ? 'pending' : 'on-going'))"></p>
         </div>
     </div>
 </div>
+<button id="back-button"><a href="tasks.html">Go back</a></button>
 <!-- Referenced a html comment box template from the website as shown below.-->
 <!-- begin wwww.htmlcommentbox.com -->
 <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comment Box</a> is loading comments...</div>
