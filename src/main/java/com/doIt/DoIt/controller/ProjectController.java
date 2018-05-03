@@ -31,6 +31,8 @@ public class ProjectController {
         return "projects";
     }
 
+
+
     /** Mapping for the delete project
      * "projects" attribute returns a list of all projects
      * "username" return username of a currently logged in user*/
