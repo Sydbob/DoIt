@@ -49,57 +49,123 @@
         <h1>Tasks</h1>
     </div>
 
+    <!--
+
+    ================MY TASKS==================
+
+    Viewable to user
+    -->
+
+    <div class = "user">
+
 <div class="container invisible-at-first" id="homeDiv">
-    <!--<div class="jumbotron text-center">
-        <h2>Welcome to DoIt task manager! JUST DO IT!</h2>
-    </div>-->
+    <div class="title-box">
+        <h2>My Tasks</h2>
+    </div>
 </div>
 
+    <div class = "container-box">
+
+        <div class="container text-center" id="tasksDiv">
+            <hr />
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Hours Estimated</th>
+                        <th>Hours Contributed</th>
+                        <th>Project ID</th>
+                        <th> </th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="task : ${tasks}">
+                    <tr>
+                        <td th:text="${task.taskID}">1</td>
+                        <td th:text="${task.name}">1</td>
+                        <td th:text="${task.description}">1</td>
+                        <td th:text="${task.status}" th:class="${task.status}=='pending' ? 'yellow' : (${task.status}=='overdue' ? 'red' : (${task.status}=='completed' ? 'green' : 'white'))">1</td>
+                        <td th:text="${task.hours_estimated}">1</td>
+                        <td th:text="${task.hours_contributed}">1</td>
+                        <td th:text="${task.projectID}">1</td>
+                        <td><a th:href="@{view-task(id=${task.taskID})}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                        <td><a th:href="@{update-task(id=${task.taskID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a th:href="@{delete-task(id=${task.taskID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="piechart"></div>
+        </div>
+    </div>
+    </div>
+
+    <!--
+
+    ================ALL TASKS==================
+
+    Viewable to admin
+    -->
+
+    <div class = "admin">
+
     <div class="container invisible-at-first" id="homeDiv">
+        <div class="title-box">
+            <h2>All Tasks</h2>
+        </div>
     </div>
 
     <div class = "container-box">
 
-<div class="container text-center" id="tasksDiv">
-    <hr />
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Hours Estimated</th>
-                <th>Hours Contributed</th>
-                <th>Project ID</th>
-                <th> </th>
-                <th> </th>
-                <th> </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="task : ${tasks}">
-            <tr>
-                <td th:text="${task.taskID}">1</td>
-                <td th:text="${task.name}">1</td>
-                <td th:text="${task.description}">1</td>
-                <td th:text="${task.status}" th:class="${task.status}=='pending' ? 'yellow' : (${task.status}=='overdue' ? 'red' : (${task.status}=='completed' ? 'green' : 'white'))">1</td>
-                <td th:text="${task.hours_estimated}">1</td>
-                <td th:text="${task.hours_contributed}">1</td>
-                <td th:text="${task.projectID}">1</td>
-                <td><a th:href="@{view-task(id=${task.taskID})}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
-                <td><a th:href="@{update-task(id=${task.taskID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                <td><a th:href="@{delete-task(id=${task.taskID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
-            </tr>
-            </tr>
-            </tbody>
-        </table>
+        <div class="container text-center" id="tasksDiv">
+            <hr />
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Hours Estimated</th>
+                        <th>Hours Contributed</th>
+                        <th>Project ID</th>
+                        <th> </th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="task : ${tasks}">
+                    <tr>
+                        <td th:text="${task.taskID}">1</td>
+                        <td th:text="${task.name}">1</td>
+                        <td th:text="${task.description}">1</td>
+                        <td th:text="${task.status}" th:class="${task.status}=='pending' ? 'yellow' : (${task.status}=='overdue' ? 'red' : (${task.status}=='completed' ? 'green' : 'white'))">1</td>
+                        <td th:text="${task.hours_estimated}">1</td>
+                        <td th:text="${task.hours_contributed}">1</td>
+                        <td th:text="${task.projectID}">1</td>
+                        <td><a th:href="@{view-task(id=${task.taskID})}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                        <td><a th:href="@{update-task(id=${task.taskID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                        <td><a th:href="@{delete-task(id=${task.taskID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="piechart"></div>
+        </div>
     </div>
-    <div id="piechart"></div>
-</div>
 
-</div>
+    </div>
+
 </div>
 
 <!--<script th:src="@{js/jquery-1.11.1.min.js}"></script>-->

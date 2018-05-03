@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Do It! | Team</title>
+    <link th:href="@{https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css}" rel="stylesheet" />
+    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" />
+
+
+    <link th:href="@{css/teststyle.css}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="test3.js"></script>
+
+    <!--<script th:src="@{js/jquery-1.11.1.min.js}"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+
+    <script src="bootstrap.min.js"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <i class="fa fa-cogs"></i>
+        <span>DO IT</span>
+    </div>
+    <a href="#" class="nav-trigger"><span></span></a>
+</div>
+<div class="side-nav">
+    <div class="logo">
+        <i class="fa fa-cogs"></i>
+        <span>DO IT</span>
+    </div>
+    <nav>
+        <img class="logo-image" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
+        <ul>
+            <li>
+                <a href="/dashboard">
+                    <span><i class="fa fa-dashboard"> </i></span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/projects">
+
+                    <span><i class="fa fa-folder"></i></span>
+                    <span>Project</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="/sprints">
+                    <span><i class="fa fa-play"></i></span>
+                    <span>Sprints</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tasks">
+                    <span><i class="fa fa-tasks"></i></span>
+                    <!-- <span>Task</span> -->
+                    <span id="link">Tasks</span>
+                </a>
+            </li>
+            <li>
+                <a href="/teams">
+                    <span><i class="fa fa-group"></i></span>
+                    <span id="link">Teams</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+<div class="main-content">
+
+
+    <!-- <div class="container text-center" id="tasksDiv">
+            <h2 id="header-title">My Teams</h2>
+        </div> -->
+    <div id="header-title" class="header-title2">
+        <h2>My Teams</h2>
+    </div>
+    <div id="welcome">
+        <i class="fa fa-user"></i>
+        <p id="welcome">Welcome  </p><p th:text="${username}"></p>
+
+        <form id="login" action="/login">
+            <input id="logout" class="btn btn-md btn-warning btn-block" type="submit" value="Log Out"/>
+        </form>
+    </div>
+    <div class="flex-container"  >
+        <div class="limiter">
+            <h3>Team Number: </h3><h3 th:text ="${myteamID}"></h3><br/>
+            <h6 th:text = "${myproject.title}"></h6><br/>
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1 m-b-110">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column1">Name</th>
+                                    <th class="cell100 column2">Telephone</th>
+                                    <th class="cell100 column3">Email</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll" th:each = "member: ${myteam}">
+                            <table>
+                                <tbody>
+                                <tr class="row100 body">
+                                    <td class="cell100 column1" th:text="${member.name}">1</td>
+                                    <td class="cell100 column2" th:text="${member.telephone}">1</td>
+                                    <td class="cell100 column3" th:text="${member.email}">1</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header-title" class="jumbotron text-center">
+        <h2>All Teams</h2>
+    </div>
+
+    <!--
+
+================ALL TEAMS==================
+th:each="team : ${teams}"
+
+-->
+
+    <div class="flex-container" th:each = "team : ${teams}">
+        <div class="limiter">
+            <h3>Team Number:</h3><h3 th:text = "${team.teamID}"></h3><br/>
+            <h6>[Thyme Leaf - Project name goes here]</h6><br/>
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100 ver1 m-b-110">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column1">Name</th>
+                                    <th class="cell100 column2">Telephone</th>
+                                    <th class="cell100 column3">Email</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table100-body js-pscroll" th:each = "member : ${members}">
+                            <table>
+                                <tbody>
+                                <tr class="row100 body" th:if = "${member.teamID == team.teamID}">
+                                    <td class="cell100 column1" th:text="${member.name}">[Thyme Leaf - Member name goes here]</td>
+                                    <td class="cell100 column2" th:text="${member.telephone}">[Thyme Leaf - Member number goes here]</td>
+                                    <td class="cell100 column3" th:text="${member.email}">[Thyme Leaf - Member email goes here]</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer>
+    <p>&copy; Copyright 2018. DoIt Ltd. All rights reserved. DoIt is a registered trademark. No content may be downloaded for commercial or non-commercial usage.</p>
+</footer>
+
+</body>
+</html>

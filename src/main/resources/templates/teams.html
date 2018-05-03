@@ -57,20 +57,21 @@
     </div>
 
 
-  
+
 
     <!--
 
     ================MY TEAM==================
 
+     Viewable to user
      -->
 
-<div class="container invisible-at-first" id="homeDiv">
-
-    <div class="jumbotron text-center">
-        <h2>My Teams</h2>
-    </div>
-</div>
+    <div class="user">
+        <div class="container invisible-at-first" id="homeDiv">
+            <div class="title-box">
+                <h2>My Teams</h2>
+            </div>
+        </div>
     <div class="flex-container"  >
         <div class="limiter">
             <h3>Team Number: </h3><h3 th:text ="${myteamID}"></h3><br/>
@@ -107,19 +108,23 @@
             </div>
         </div>
     </div>
-    <div class="container invisible-at-first" id="homeDiv">
-        <div class="jumbotron text-center">
-            <h2>All Teams</h2>
-        </div>
     </div>
+
 
     <!--
 
     ================ALL TEAMS==================
-    th:each="team : ${teams}"
 
+    Viewable to admin
     -->
 
+    <div class="container invisible-at-first" id="homeDiv">
+        <div class="title-box">
+            <h2>My Teams</h2>
+        </div>
+    </div>
+
+    <div class="admin">
     <div class="flex-container" th:each = "team : ${teams}">
         <div class="limiter">
             <h3>Team Number:</h3><h3 th:text = "${team.teamID}"></h3><br/>
@@ -153,6 +158,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 </div>
