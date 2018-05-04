@@ -21,33 +21,27 @@
 </head>
 
 <body>
-
-
-
-<div role="navigation">
-    <div class="navbar navbar-inverse">
-
+<div class="navigation">
+    <div class = "top-navigation">
         <div class="welcome">
             <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
-        </div>
-
-        <div class="logout">
-            <a href="/login">Log out</a>
             <img class="user" src="/images/user.png"/>
         </div>
-
-        <a href="/" class="navbar-brand">DoIt!</a>
-        <div class="navbar-collapse collapse">
-            <ul>
-                <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
-                <li><img class="navigation" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
-                <li><img class="navigation" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
-                <li><img class="navigation" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-                <li><img class="navigation" src="/images/sidebar/taskactive.png"/><a class ="active" href="/tasks">Tasks</a></li>
-                <li><img class="navigation" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
-            </ul>
+        <div class="logout">
+            <form action="/login">
+                <input type="submit" value="Log Out"/>
+            </form>
         </div>
     </div>
+
+    <ul>
+        <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
+        <li><img class="navigation-sprite" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/taskactive.png"/><a class ="active" href="/tasks">Tasks</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
+    </ul>
 </div>
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
