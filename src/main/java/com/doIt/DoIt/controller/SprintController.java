@@ -31,6 +31,8 @@ public class SprintController {
     public String usersSprints(Authentication auth, HttpServletRequest request){
         request.setAttribute("sprints", sprintService.getAllSprintsByTeamID(memberService.findUserByUsername(auth.getName()).getTeamID()));
         request.setAttribute("username", auth.getName());
+        request.setAttribute("allsprints", sprintService.getAllSprints());
+        request.setAttribute("isAdmin", memberService.isAdmin(auth.getName()));
         request.setAttribute("mode", "MODE_SPRINTS");
         return "sprints";
     }

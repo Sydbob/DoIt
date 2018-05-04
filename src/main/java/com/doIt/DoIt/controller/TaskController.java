@@ -21,6 +21,8 @@ public class TaskController {
 
     @Autowired
     private TaskService taskService;
+    @Autowired
+    private MemberService memberService;
 
 
     /** Mapping for the task page
@@ -28,7 +30,9 @@ public class TaskController {
     @GetMapping("/tasks")
     public String usersTasks(Authentication auth, HttpServletRequest request){
         request.setAttribute("tasks", taskService.getTasksByUsername(auth.getName()));
+        request.setAttribute("alltasks", taskService.getAllTasks());
         request.setAttribute("username", auth.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(auth.getName()));
         request.setAttribute("mode", "MODE_TASKS");
         return "tasks";
     }
