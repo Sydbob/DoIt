@@ -70,13 +70,15 @@
     <div class="user">
         <div class="container invisible-at-first" id="homeDiv">
             <div class="title-box">
-                <h2>My Teams</h2>
+                <h2>My Team</h2>
             </div>
         </div>
-    <div class="flex-container"  >
+    <div class="flex-container">
         <div class="limiter">
+            <div class="team-ID">
             <h3>Team Number: </h3><h3 th:text ="${myteamID}"></h3><br/>
-            <h6 th:text = "${myproject.title}"></h6><br/>
+            </div>
+            <h4 th:text = "${myproject.title}"></h4><br/>
             <div class="container-table100">
                 <div class="wrap-table100">
                     <div class="table100 ver1 m-b-110">
@@ -128,10 +130,12 @@
     <!-- th:if = "@{isAdmin}" in the field that you only want to be shown to admnins, so the edit button e.g. -->
 
     <div class="admin">
-    <div class="flex-container" th:each = "team : ${teams}">
-        <div class="limiter">
+    <div class="flex-container">
+        <div class="limiter" th:each = "team : ${teams}">
+            <div class="team-ID">
             <h3>Team Number:</h3><h3 th:text = "${team.teamID}"></h3><br/>
-            <h6>[Thyme Leaf - Project name goes here]</h6><br/>
+            </div>
+            <h4>[Thyme Leaf - Project name goes here]</h4><br/>
             <div class="container-table100">
                 <div class="wrap-table100">
                     <div class="table100 ver1 m-b-110">

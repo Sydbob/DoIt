@@ -5,6 +5,7 @@ body {
 
 .main-body{
     margin-left: 10%;
+    margin-bottom: 100px;
 }
 
 .top-navigation{
@@ -265,4 +266,8 @@ th {
 
 .welcome p {
     color:  #FD038A;
+}
+
+.new-buttons {
+    padding-left: 16%;
 }

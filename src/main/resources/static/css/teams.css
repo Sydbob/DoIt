@@ -3,6 +3,8 @@
     flex-wrap: wrap;
     max-width: 100%;
     display: flex;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .flex-container > div {
@@ -14,6 +16,10 @@
     text-align: center;
     line-height: 75px;
     font-size: 30px;
+}
+
+.team-ID {
+    display: inline;
 }
 
 
@@ -52,7 +58,10 @@ a:hover {
 h1,h2,h3,h4,h5,h6 {
     margin: 0px;
     text-align: center;
+    display: inline;
 }
+
+
 
 p {margin: 0px;}
 
