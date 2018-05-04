@@ -209,7 +209,7 @@ img.user {
 }
 
 .yellow{
-    background-color: #FDF303;;
+    background-color: #FDF303;
 }                                                                                                                                       
 
 .red{
@@ -315,7 +315,7 @@ style for the dashboard strip
 }
 
 #overdue {
-    background-color: red;
+    background-color:  #FD030D;
 }
 
 #pending {
