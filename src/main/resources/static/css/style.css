@@ -4,7 +4,7 @@ body {
 }
 
 .main-body{
-    margin-left: 10%;
+    margin-left: 250px;
     margin-bottom: 100px;
     background-color: #fafafa;
     background: url(backgrounds/background.jpg);
@@ -235,6 +235,12 @@ footer {
     background:#3b4a54;
 }
 
+/*
+Style for the tables
+ */
+
+
+
 tr:hover {
 
     background-color: #ffd9ed;
@@ -249,6 +255,7 @@ th {
 /*
     Style for logout
  */
+
 .logout {
     text-align: right;
 }
