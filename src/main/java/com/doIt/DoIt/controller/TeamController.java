@@ -1,5 +1,6 @@
 package com.doIt.DoIt.controller;
 
+import com.doIt.DoIt.entity.Member;
 import com.doIt.DoIt.entity.Role;
 import com.doIt.DoIt.entity.Team;
 import com.doIt.DoIt.service.MemberService;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**Controller for the team entity.
 Handles all requests involving team and provided page mapping for the entity as well. */
@@ -45,8 +48,8 @@ public class TeamController {
         return "teams";
     }
 
-    @GetMapping("/admin/update-teams")
-    public String editTeam(Authentication auth, HttpServletRequest request){
+    @GetMapping("/update-teams")
+    public String editTeam( Authentication auth, HttpServletRequest request){
         request.setAttribute("teams",teamService.getAllTeams());
         request.setAttribute("members", memberService.getAllMembers());
         request.setAttribute("username", auth.getName());
@@ -55,9 +58,9 @@ public class TeamController {
         return "updateteam";
     }
 
-    @PostMapping("/admin/save-team")
-    public String saveTeam(@ModelAttribute Team team, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
-        teamService.save(team);
+    @PostMapping("/save-team")
+    public String saveTeam(@ModelAttribute Member member, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
+        memberService.saveMemeber(member);
         request.setAttribute("myteam", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
         request.setAttribute("myteamID", memberService.findTeamIDByUsername(auth.getName()));
         request.setAttribute("myproject", projectService.findProject(teamService.getTeamByID(memberService.findTeamIDByUsername(auth.getName())).getProjectID()));
