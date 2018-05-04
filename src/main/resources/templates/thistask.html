@@ -89,9 +89,16 @@
         <div class="col-md-7">
             <p type="text" class="form-control" name="status" th:text="${task.status}"></p>
         </div>
+        <div class='new-buttons'>
+
+            <form action="/tasks">
+                <input type="submit" value="Back"/>
+            </form>
+
+        </div>
     </div>
 </div>
-<button id="back-button"><a href="tasks.html">Go back</a></button>
+
 
 
 
