@@ -42,20 +42,21 @@ public class TeamController {
         request.setAttribute("username", auth.getName());
         request.setAttribute("isAdmin", memberService.isAdmin(auth.getName()));
         request.setAttribute("mode", "MODE_TEAMS");
-
         return "teams";
     }
 
-    @GetMapping("/admin/update-team")
-    public String editTeam(@RequestParam int id,  Authentication auth, HttpServletRequest request){
-        request.setAttribute("task", teamService.getTeamByID(id));
+    @GetMapping("/admin/update-teams")
+    public String editTeam(Authentication auth, HttpServletRequest request){
+        request.setAttribute("teams",teamService.getAllTeams());
+        request.setAttribute("members", memberService.getAllMembers());
         request.setAttribute("username", auth.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(auth.getName()));
         request.setAttribute("mode", "MODE_UPDATE");
         return "updateteam";
     }
 
     @PostMapping("/admin/save-team")
-    public String saveTask(@ModelAttribute Team team, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
+    public String saveTeam(@ModelAttribute Team team, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
         teamService.save(team);
         request.setAttribute("myteam", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
         request.setAttribute("myteamID", memberService.findTeamIDByUsername(auth.getName()));
@@ -63,7 +64,9 @@ public class TeamController {
         request.setAttribute("teams",teamService.getAllTeams());
         request.setAttribute("members", memberService.getAllMembers());
         request.setAttribute("username", auth.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(auth.getName()));
         request.setAttribute("mode", "MODE_TASKS");
         return "teams";
     }
+
 }
