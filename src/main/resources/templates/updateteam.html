@@ -47,26 +47,33 @@
 </div>
 <div class="container invisible-at-first" id="homeDiv">
     <div class="jumbotron text-center">
-        <h2>Create a new Team Member</h2>
+        <h2>Update Teams</h2>
     </div>
 </div>
 <div class="container text-center">
-    <h3>New Member</h3>
-    <form class="form-horizontal" method="POST" action="update-team">
-        <input type="hidden" name="teamID" th:value="${member.teamID}"/>
+
+    <form class="form-horizontal" method="POST" action="/update-team">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Team ID</th>
+                    <th> </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="member : ${members}">
+                <tr>
+                    <td th:text="${member.name}">1</td>
+                    <td><input type="text" name ="teamID" th:value="${member.teamID}" /></td>
+                </tr>
+                </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="form-group">
-            <label class="control-label col-md-3">Name:</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="name" th:value="${member.name}"/>
-            </div>
-            <label class="control-label col-md-3">Telephone number:</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="telephone" th:value="${member.telephone}"/>
-            </div>
-            <label class="control-label col-md-3">Email:</label>
-            <div class="col-md-7">
-                <input type="text" class="form-control" name="email" th:value="${member.email}"/>
-            </div>
+            <input type="submit" class="btn btn-primary" value="Save"/>
         </div>
     </form>
 </div>

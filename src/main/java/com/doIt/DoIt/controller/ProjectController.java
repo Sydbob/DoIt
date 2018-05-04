@@ -45,6 +45,7 @@ public class ProjectController {
         projectService.delete(id);
         request.setAttribute("projects", projectService.getAllProjects());
         request.setAttribute("username", authentication.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(authentication.getName()));
         request.setAttribute("mode", "MODE_PROJECTS");
         return "projects";
     }
@@ -54,6 +55,7 @@ public class ProjectController {
     @GetMapping("/new-project")
     public String newProject (HttpServletRequest request, Authentication authentication){
         request.setAttribute("mode", "MODE_NEW");
+        request.setAttribute("isAdmin", memberService.isAdmin(authentication.getName()));
         request.setAttribute("username", authentication.getName());
         return "newproject";
     }
@@ -66,6 +68,7 @@ public class ProjectController {
         projectService.save(proj);
         request.setAttribute("projects", projectService.getAllProjects());
         request.setAttribute("username", authentication.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(authentication.getName()));
         request.setAttribute("mode", "MODE_PROJECTS");
         return "projects";
     }
@@ -77,6 +80,7 @@ public class ProjectController {
     public String updateProject(@RequestParam int id, HttpServletRequest request, Authentication authentication){
         request.setAttribute("project", projectService.findProject(id));
         request.setAttribute("username", authentication.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(authentication.getName()));
         request.setAttribute("mode", "MODE_UPDATE");
         return "updateproject";
     }
