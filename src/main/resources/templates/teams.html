@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -120,11 +121,13 @@
     Viewable to admin
     -->
 
-    <div class="container invisible-at-first" id="homeDiv">
+    <div class="container invisible-at-first" id="homeDiv" >
         <div class="title-box">
             <h2>All Teams</h2>
         </div>
     </div>
+
+    <!-- th:if = "@{isAdmin}" in the field that you only want to be shown to admnins, so the edit button e.g. -->
 
     <div class="admin">
     <div class="flex-container">

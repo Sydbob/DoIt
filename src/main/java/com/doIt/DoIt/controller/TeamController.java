@@ -1,5 +1,6 @@
 package com.doIt.DoIt.controller;
 
+import com.doIt.DoIt.entity.Role;
 import com.doIt.DoIt.entity.Team;
 import com.doIt.DoIt.service.MemberService;
 import com.doIt.DoIt.service.ProjectService;
@@ -39,11 +40,13 @@ public class TeamController {
         request.setAttribute("teams", teamService.getAllTeams());
         request.setAttribute("members", memberService.getAllMembers());
         request.setAttribute("username", auth.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(auth.getName()));
         request.setAttribute("mode", "MODE_TEAMS");
+
         return "teams";
     }
 
-    @GetMapping("/update-team")
+    @GetMapping("/admin/update-team")
     public String editTeam(@RequestParam int id,  Authentication auth, HttpServletRequest request){
         request.setAttribute("task", teamService.getTeamByID(id));
         request.setAttribute("username", auth.getName());
@@ -51,7 +54,7 @@ public class TeamController {
         return "updateteam";
     }
 
-    @PostMapping("/save-team")
+    @PostMapping("/admin/save-team")
     public String saveTask(@ModelAttribute Team team, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
         teamService.save(team);
         request.setAttribute("myteam", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));

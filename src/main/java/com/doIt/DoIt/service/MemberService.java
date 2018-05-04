@@ -14,6 +14,8 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Service class for member entity
  * This class has all the methods involving members
@@ -51,6 +53,17 @@ public class MemberService {
             teammembers.add(m);
         }
         return teammembers;
+    }
+
+    public boolean isAdmin(String username) {
+        boolean isAdmin= false;
+        for (Role r : memberRepository.findByUsername(username).getRoles()){
+            if (r.getRoleID() == 1){
+                isAdmin = true;
+                break;
+            }
+        }
+        return isAdmin;
     }
 
     public Member createUser(MemberDTO memberDTO, BindingResult bindingResult){

@@ -1,5 +1,6 @@
 package com.doIt.DoIt.controller;
 import com.doIt.DoIt.entity.Project;
+import com.doIt.DoIt.service.MemberService;
 import com.doIt.DoIt.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,6 +20,8 @@ public class ProjectController {
 
     @Autowired
     private ProjectService projectService;
+    @Autowired
+    private MemberService memberService;
 
     /** Mapping for the project page
      * "projects" attribute returns a list of all projects
@@ -27,6 +30,7 @@ public class ProjectController {
     public String allProjects(HttpServletRequest request, Authentication authentication){
         request.setAttribute("projects", projectService.getAllProjects());
         request.setAttribute("username", authentication.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(authentication.getName()));
         request.setAttribute("mode", "MODE_PROJECTS");
         return "projects";
     }
