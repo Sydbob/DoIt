@@ -84,8 +84,6 @@
                             <td th:text="${sprint.teamID}">1</td>
                             <td th:text="${sprint.deadline}">1</td>
                             <td th:text="${sprint.start_date}">1</td>
-                            <td><a th:href="@{update-sprint(id=${sprint.sprintID})}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                            <td><a th:href="@{delete-sprint(id=${sprint.sprintID})}"><span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
                         </tr>
                         </tbody>
@@ -102,7 +100,7 @@
     Viewable to admin
     -->
 
-    <div class="admin">
+    <div class="admin" th:if="${isAdmin}">
     <div class="container invisible-at-first" id="homeDiv">
         <div class="title-box">
             <h2>All Sprints</h2>
@@ -125,7 +123,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="sprint : ${sprints}">
+                    <tr th:each="sprint : ${allsprints}">
                     <tr>
                         <td th:text="${sprint.sprintID}">1</td>
                         <td th:text="${sprint.projectID}">1</td>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="Sat, 01 Dec 2001 00:00:00 GMT" />
+
+    <title>DoIt! | Teams</title>
+
+
+
+
+    <link th:href="@{css/style.css}" rel="stylesheet" />
+    <link th:href="@{css/teams.css}" rel="stylesheet" />
+
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="navigation">
+    <div class = "top-navigation">
+        <div class="welcome">
+            <p style="display:inline">Welcome </p><p style="display:inline" th:text="${username}"></p>
+            <img class="user" src="/images/user.png"/>
+        </div>
+        <div class="logout">
+            <form action="/login">
+                <input type="submit" value="Log Out"/>
+            </form>
+        </div>
+    </div>
+
+    <ul>
+        <img class="logo" src="../images/logo2.png" title="&quot;Do It Logo&quot;"/>
+        <li><img class="navigation-sprite" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/task.png"/><a href="/tasks">Tasks</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/teamactive.png"/><a class ="active" href="/teams">Teams</a></li>
+    </ul>
+</div>
+<div class="container invisible-at-first" id="homeDiv">
+    <div class="jumbotron text-center">
+        <h2>Create a new Team Member</h2>
+    </div>
+</div>
+<div class="container text-center">
+    <h3>New Member</h3>
+    <form class="form-horizontal" method="POST" action="update-team">
+        <input type="hidden" name="teamID" th:value="${member.teamID}"/>
+        <div class="form-group">
+            <label class="control-label col-md-3">Name:</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="name" th:value="${member.name}"/>
+            </div>
+            <label class="control-label col-md-3">Telephone number:</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="telephone" th:value="${member.telephone}"/>
+            </div>
+            <label class="control-label col-md-3">Email:</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" name="email" th:value="${member.email}"/>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
