@@ -36,6 +36,7 @@ public class MemberService {
         return memberRepository.findByUsername(username);
     }
 
+
     public ArrayList<Member> getTeamMembersByTeamID(int teamid){
         ArrayList<Member> teammembers = new ArrayList<>();
         for (Member m : memberRepository.findAll()){
