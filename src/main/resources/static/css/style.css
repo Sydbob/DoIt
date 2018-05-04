@@ -209,7 +209,7 @@ img.user {
 }
 
 .yellow{
-    background-color: #FDF303;;
+    background-color: #FDF303;
 }                                                                                                                                       
 
 .red{
@@ -288,5 +288,47 @@ th {
 }
 
 /*
+<<<<<<< HEAD
     Style for view tasks page
  */
+=======
+style for the dashboard strip
+ */
+
+.status-strip {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.status-box {
+    margin: 10px;
+    font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+    height: 100px;
+    width: 350px;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    display: inline-block;
+    color: white;
+    padding: 20px;
+}
+
+#completed {
+    background-color: green;
+}
+
+#overdue {
+    background-color:  #FD030D;
+}
+
+#pending {
+    background-color: blue;
+}
+
+#thc {
+    background-color: orange;
+}
+
+
+>>>>>>> 0930aa0b9c4a2cbab4c70b82130b42764f772926

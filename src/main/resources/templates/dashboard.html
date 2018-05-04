@@ -54,41 +54,49 @@
 
 <div class="container invisible-at-first" id="homeDiv">
 </div>
+    <!--
+     ====== status box things feel free to make these better =====
+ -->
+    <div class='status-strip'>
+        <div class='status-box' id='completed'>
+
+            <h3>Tasks Completed</h3>
+
+            <p th:text="${numTasksDone}"></p>
+
+        </div>
+
+        <div class='status-box' id='overdue' >
+            <h3>Tasks Overdue</h3>
+            <p th:text="${numTasksOverdue}"></p>
+        </div>
+
+        <div class='status-box' id='pending'>
+            <h3>Tasks Pending</h3>
+            <p th:text="${numTasksPending}"></p>
+        </div>
+
+        <div class='status-box' id='thc'>
+            <h3>Total Hours Contributed</h3>
+            <p th:text="${totalHoursContributed}"></p>
+        </div>
+
+    </div>
+
+
+    <!-- ====== status box things end =====  -->
 <div class="container text-center" id="tasksDiv">
     <hr />
-    <!--
-         ====== status box things feel free to make these better =====
-     -->
-    <div class='status-box'>
-        <h3>Tasks Completed</h3>
-        <p th:text="${numTasksDone}"></p>
-    </div>
 
-    <div class='status-box' >
-        <h3>Tasks Overdue</h3>
-        <p th:text="${numTasksOverdue}"></p>
-    </div>
-
-    <div class='status-box'>
-        <h3>Tasks Pending</h3>
-        <p th:text="${numTasksPending}"></p>
-    </div>
-
-    <div class='status-box'>
-        <h3>Total Hours Contributed</h3>
-        <p th:text="${totalHoursContributed}"></p>
-    </div>
-
-
-        <!-- ====== status box things end =====  -->
 
 
 
     <div class="table-responsive">
-        <table class="table table-responsive table-bordered text-left">
+        <table class="table table-responsive table-striped text-left">
             <thead>
-            <tr>
-                <th>Completed Tasks</th>
+            <h4> Completed Tasks </h4>
+                <tr>
+
             </tr>
             <tr>
                 <th>ID</th>
