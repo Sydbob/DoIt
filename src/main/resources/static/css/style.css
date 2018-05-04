@@ -116,7 +116,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 1365px;
+    min-width: 100%;
 }
 
 
@@ -125,7 +125,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 1218px;
+    min-width: 100%;
 }
 
 #sprint {
@@ -133,7 +133,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
-    min-width: 1365px;
+    min-width: 100%;
 }
 
 #task {
@@ -141,7 +141,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 1358px;
+    min-width: 100%;
 }
 
 #team {
@@ -149,7 +149,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 1066px;
+    min-width: 100%;
 }
 
 .header-box {
