@@ -13,6 +13,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
+    padding-bottom: 450px;
 
 }
 
@@ -116,7 +117,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 1365px;
+    min-width: 100%;
 }
 
 
@@ -125,7 +126,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 1218px;
+    min-width: 100%;
 }
 
 #sprint {
@@ -133,7 +134,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
-    min-width: 1365px;
+    min-width: 100%;
 }
 
 #task {
@@ -141,7 +142,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 1358px;
+    min-width: 100%;
 }
 
 #team {
@@ -149,7 +150,7 @@ div.body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-width: 1066px;
+    min-width: 100%;
 }
 
 .header-box {
@@ -219,6 +220,7 @@ img.user {
     background-color: #f1f1f1;
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
 }
 .container.invisible-at-first {
     padding: 30px;
@@ -315,7 +317,7 @@ th {
 <<<<<<< HEAD
     Style for view tasks page
  */
-=======
+/*=======
 style for the dashboard strip
  */
 
@@ -355,4 +357,3 @@ style for the dashboard strip
 }
 
 
->>>>>>> 0930aa0b9c4a2cbab4c70b82130b42764f772926

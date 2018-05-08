@@ -45,12 +45,17 @@
         <li><img class="navigation-sprite" src="/images/sidebar/dashboard.png"/><a href="/dashboard">Dashboard</a></li>
         <li><img class="navigation-sprite" src="/images/sidebar/project.png"/><a  href="/projects">Projects</a></li>
         <li><img class="navigation-sprite" src="/images/sidebar/sprint.png"/><a href="/sprints">Sprints</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/task.png"/><a class ="active" href="/tasks">Tasks</a></li>
-        <li><img class="navigation-sprite" src="/images/sidebar/teamactive.png"/><a href="/teams">Teams</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/taskactive.png"/><a class ="active" href="/tasks">Tasks</a></li>
+        <li><img class="navigation-sprite" src="/images/sidebar/team.png"/><a href="/teams">Teams</a></li>
     </ul>
 </div>
 
-<div class="main-body">
+<div class="update-body">
+    <div class="container invisible-at-first" id="homeDiv">
+        <div class="title-box">
+            <h2>View Task Details</h2>
+        </div>
+    </div>
 <div class="container text-center" id="information">
     <h3>View Task</h3>
     <div method="GET" id="task-info">
@@ -84,9 +89,16 @@
         <div class="col-md-7">
             <p type="text" class="form-control" name="status" th:text="${task.status}"></p>
         </div>
+        <div class='new-buttons'>
+
+            <form action="/tasks">
+                <input type="submit" value="Back"/>
+            </form>
+
+        </div>
     </div>
 </div>
-<button id="back-button"><a href="tasks.html">Go back</a></button>
+
 
 
 
