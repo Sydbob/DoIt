@@ -48,6 +48,19 @@ public class TeamController {
         return "teams";
     }
 
+    @GetMapping("/new-team")
+    public String newTask(HttpServletRequest request, Authentication auth){
+        request.setAttribute("mode", "MODE_NEW");
+        request.setAttribute("username", auth.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(auth.getName()));
+        request.setAttribute("myteam", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
+        request.setAttribute("myteamID", memberService.findTeamIDByUsername(auth.getName()));
+        request.setAttribute("myproject", projectService.findProject(teamService.getTeamByID(memberService.findTeamIDByUsername(auth.getName())).getProjectID()));
+        request.setAttribute("teams", teamService.getAllTeams());
+        request.setAttribute("members", memberService.getAllMembers());
+        return "newteam";
+    }
+
     @GetMapping("/update-teams")
     public String editTeam( Authentication auth, HttpServletRequest request){
         request.setAttribute("teams",teamService.getAllTeams());
@@ -59,8 +72,24 @@ public class TeamController {
     }
 
     @PostMapping("/save-team")
-    public String saveTeam(@ModelAttribute Member member, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
-        memberService.saveMemeber(member);
+    public String saveTeam(@ModelAttribute ArrayList<Member> member, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
+        for (Member m : member){
+            memberService.saveMemeber(m);
+        }
+        request.setAttribute("myteam", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
+        request.setAttribute("myteamID", memberService.findTeamIDByUsername(auth.getName()));
+        request.setAttribute("myproject", projectService.findProject(teamService.getTeamByID(memberService.findTeamIDByUsername(auth.getName())).getProjectID()));
+        request.setAttribute("teams",teamService.getAllTeams());
+        request.setAttribute("members", memberService.getAllMembers());
+        request.setAttribute("username", auth.getName());
+        request.setAttribute("isAdmin", memberService.isAdmin(auth.getName()));
+        request.setAttribute("mode", "MODE_TASKS");
+        return "teams";
+    }
+
+    @PostMapping("/create-team")
+    public String saveTeam(@ModelAttribute Team team, BindingResult bindingResult, HttpServletRequest request, Authentication auth){
+        teamService.save(team);
         request.setAttribute("myteam", memberService.getTeamMembersByTeamID(memberService.findTeamIDByUsername(auth.getName())));
         request.setAttribute("myteamID", memberService.findTeamIDByUsername(auth.getName()));
         request.setAttribute("myproject", projectService.findProject(teamService.getTeamByID(memberService.findTeamIDByUsername(auth.getName())).getProjectID()));

@@ -65,7 +65,7 @@
 </div>
 
 <div class = "container-box">
-    <div class='new-buttons'>
+    <div class='new-buttons' th:if = "${isAdmin}">
 
         <form action="/new-project">
             <input type="submit" value="New Project"/>
