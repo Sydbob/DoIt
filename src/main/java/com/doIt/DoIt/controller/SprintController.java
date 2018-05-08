@@ -90,7 +90,7 @@ public class SprintController {
      * "sprint" attribute returns a sprint based on the id*/
     @GetMapping("/update-sprint")
     public String updateSprint(@RequestParam int id, HttpServletRequest request, Authentication authentication){
-        request.setAttribute("sprints", sprintService.getAllSprintsByTeamID(memberService.findUserByUsername(authentication.getName()).getTeamID()));
+        request.setAttribute("sprint", sprintService.findSprint(memberService.findUserByUsername(authentication.getName()).getTeamID()));
         request.setAttribute("allsprints", sprintService.getAllSprints());
         request.setAttribute("username", authentication.getName());
         request.setAttribute("isAdmin", memberService.isAdmin(authentication.getName()));
