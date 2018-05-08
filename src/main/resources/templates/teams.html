@@ -74,7 +74,7 @@
             </div>
 
         </div>
-        <div class='new-buttons1'>
+        <div class='new-buttons1' th:if="${isAdmin}">
 
             <form action="/new-team">
                 <input type="submit" value="New Team"/>
